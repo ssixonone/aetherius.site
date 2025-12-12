@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A-Frame Cycles | Titanium Track Framesets</title>
+    <style>
+        /* --- RESET & VARIABLES --- */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #1a1a1a;
+            --accent-color: #e0e0e0;
+            --border-color: #dcdcdc;
+            --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --font-mono: 'Courier New', Courier, monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        /* --- ANNOUNCEMENT BAR --- */
+        .announcement-bar {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            text-align: center;
+            padding: 8px 15px;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        /* --- HEADER --- */
+        header {
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 100;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .nav-links a:hover { opacity: 0.6; }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 60vh;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Abstract "Titanium" Background Effect */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, #e0e0e0 0%, #f9f9f9 50%, #d0d0d0 100%);
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .hero-content {
+            z-index: 1;
+            max-width: 700px;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            padding: 12px 28px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            border: 2px solid var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--text-color);
+        }
+
+        /* --- PRODUCT GRID --- */
+        .products-section {
+            padding: 60px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            text-align: center;
+            border-bottom: 2px solid var(--text-color);
+            display: inline-block;
+            padding-bottom: 5px;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .product-card {
+            cursor: pointer;
+            group: hover;
+        }
+
+        .product-image-placeholder {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            position: relative;
+            transition: filter 0.3s;
+        }
+        
+        .product-card:hover .product-image-placeholder {
+            filter: brightness(0.95);
+        }
+
+        .sold-out-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            padding: 4px 10px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .product-info {
+            text-align: center;
+        }
+
+        .product-title {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .product-price {
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .product-status {
+            font-size: 0.8rem;
+            color: #e74c3c;
+            text-transform: uppercase;
+            margin-top: 5px;
+            font-weight: 600;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #f9f9f9;
+            padding: 60px 40px;
+            margin-top: 60px;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-links { gap: 15px; font-size: 0.8rem; }
+            .hero h2 { font-size: 1.8rem; }
+            .products-section { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="announcement-bar">
+        SHIPPING IS PAUSED UNTIL NOVEMBER 10TH!
+    </div>
+
+    <header>
+        <div class="nav-links mobile-hidden">
+            <a href="#">Home</a>
+            <a href="#">Products</a>
+            <a href="#">Blog</a>
+        </div>
+
+        <div class="logo">A-FRAME CYCLES</div>
+
+        <div class="nav-links header-icons">
+            <a href="#">About</a>
+            <a href="#">Search</a>
+            <a href="#">Cart (0)</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>DOUBLE DROP!<br>PRE-ORDER OUR ALL NEW TITANIUM FRAMESETS</h2>
+            <p style="margin-bottom: 25px; font-size: 1.1rem; color: #555;">Neo-retro designs built for a lifetime.</p>
+            <a href="#" class="btn-primary">Shop Pre-Order</a>
+        </div>
+    </section>
+
+    <section class="products-section">
+        <h3 class="section-title">New Products</h3>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image-placeholder">
+                    [A-Frame AllTrack Frameset Image]
+                    <span class="sold-out-badge">Sold Out</span>
+                </div>
+                <div class="product-info">
+                    <div class="product-title">A-Frame AllTrack Frameset [Fulfillment]</div>
+                    <div class="product-price">$1,700.00 USD</div>
+                    <div class="product-status">Sold Out</div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image-placeholder">
+                    [A-Frame Fork Image]
+                </div>
+                <div class="product-info">
+                    <div class="product-title">A-Frame AllTrack Fork</div>
+                    <div class="product-price">$275.00 USD</div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image-placeholder">
+                    [Track Frameset Image]
+                    <span class="sold-out-badge">Sold Out</span>
+                </div>
+                <div class="product-info">
+                    <div class="product-title">A-Frame Track Frameset [Fulfillment]</div>
+                    <div class="product-price">$1,200.00 USD</div>
+                    <div class="product-status">Sold Out</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="products-section" style="padding-top: 0;">
+        <h3 class="section-title">Past Pre-Orders</h3>
+        
+        <div class="product-grid">
+             <div class="product-card">
+                <div class="product-image-placeholder" style="background-color: #e5e5e5;">
+                    [2024 Track Release Image]
+                </div>
+                <div class="product-info">
+                    <div class="product-title">A-Frame Track (2024 Release)</div>
+                    <div class="product-price">Ended</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">Search</a>
+            <a href="#">Contact</a>
+            <a href="#">Instagram</a>
+            <a href="#">Warranty Policy</a>
+        </div>
+        <div class="copyright">
+            &copy; 2025, A-Frame Cycles. Powered by HTML & CSS.
+        </div>
+    </footer>
+
+</body>
+</html>
