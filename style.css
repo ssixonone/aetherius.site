@@ -154,5 +154,55 @@ a:hover {
     .spec-value {
         font-size: 1.2rem;
     }
+    /* --- WORK SECTION --- */
+.work-section {
+    padding: 4rem 2rem;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    display: block;
+    border: 1px solid #333;
+    transition: border-color 0.3s ease;
+}
+
+.project-card:hover {
+    border-color: var(--accent);
+}
+
+.card-image {
+    width: 100%;
+    aspect-ratio: 4/3; /* Standard photo shape */
+    background-color: #222; /* Placeholder color until you add images */
+    background-size: cover;
+    background-position: center;
+}
+
+.placeholder-grey {
+    background: repeating-linear-gradient(
+        45deg,
+        #1a1a1a,
+        #1a1a1a 10px,
+        #222 10px,
+        #222 20px
+    );
+}
+
+.card-info {
+    padding: 1.5rem;
+}
+
+.card-info h3 {
+    margin: 0.5rem 0 0 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
 
 }
+
