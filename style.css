@@ -3,7 +3,7 @@
     --bg-color: #0F0F0F;       /* Deep Charcoal, softer than pure black */
     --text-primary: #EAEAEA;   /* Off-white/Titanium */
     --text-dim: #666666;       /* Dimmed grey for technical labels */
-    --accent: #FF3B00;         /* Safety Orange - Use sparingly */
+    --accent: #AB12CD;         /* Safety Orange - Use sparingly */
     --line-color: #333333;     /* Subtle grid lines */
 
     /* Typography */
@@ -205,4 +205,5 @@ a:hover {
 }
 
 }
+
 
