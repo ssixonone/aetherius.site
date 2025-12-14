@@ -61,7 +61,7 @@ a:hover {
 }
 
 .headline {
-    font-size: clamp(3rem, 10vw, 8rem); /* Responsive text size */
+    font-size: clamp(2rem, 6vw, 5rem);
     font-weight: 800;
     line-height: 0.9;
     margin: 0 0 2rem 0;
@@ -154,4 +154,5 @@ a:hover {
     .spec-value {
         font-size: 1.2rem;
     }
+
 }
