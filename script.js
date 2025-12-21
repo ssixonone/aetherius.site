@@ -1,35 +1,32 @@
-<script>
-    // Wait for the page to load
-    document.addEventListener("DOMContentLoaded", function() {
-        
-        // Select the elements we want to move
-        const headline = document.querySelector('.headline');
-        const intro = document.querySelector('.hero-footer');
-        const nav = document.querySelector('.nav-bar');
+document.addEventListener("DOMContentLoaded", () => {
+    const headline = document.querySelector(".headline");
+    const footer = document.querySelector(".hero-footer");
 
-        // Listen for the scroll event
-        window.addEventListener('scroll', function() {
-            
-            // Get the current scroll position
-            let scrollPosition = window.pageYOffset;
+    let latestScroll = 0;
+    let ticking = false;
 
-            // Apply different speeds (The lower the number, the slower it moves)
-            // 'translateY' moves the element down as you scroll
-            
-            // Headline moves at 40% speed of scroll (Heavy feel)
-            if(headline) {
-                headline.style.transform = `translateY(${scrollPosition * 0.4}px)`;
-                headline.style.opacity = 1 - (scrollPosition / 700); // Fades out slowly
-            }
+    function onScroll() {
+        latestScroll = window.scrollY;
+        if (!ticking) {
+            window.requestAnimationFrame(update);
+            ticking = true;
+        }
+    }
 
-            // Intro text moves at 15% speed (Stays closer to original position)
-            if(intro) {
-                intro.style.transform = `translateY(${scrollPosition * 0.15}px)`;
-            }
+    function update() {
+        if (headline) {
+            const y = latestScroll * 0.4;
+            const opacity = Math.max(0, 1 - latestScroll / 700);
+            headline.style.transform = `translateY(${y}px)`;
+            headline.style.opacity = opacity;
+        }
 
-            // Nav bar stays pinned but gets a subtle blur/fade if you want
-            // (Optional: currently just stays fixed by default CSS, 
-            // but we can add a class here if needed later)
-        });
-    });
-</script>
+        if (footer) {
+            footer.style.transform = `translateY(${latestScroll * 0.15}px)`;
+        }
+
+        ticking = false;
+    }
+
+    window.addEventListener("scroll", onScroll);
+});
