@@ -85,10 +85,10 @@
             background: #f4f4f0;
         }
         
-        /* Strict 1:1 Aspect Ratio Box */
+        /* Strict 1:1 Aspect Ratio Box (Mobile Bulletproof) */
         .slider-container {
             width: 100%; 
-            aspect-ratio: 1 / 1; 
+            padding-top: 100%; /* Forces a perfect square on all browsers */
             position: relative; 
             overflow: hidden;
             background: #fff;
