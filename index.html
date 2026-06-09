@@ -10,9 +10,10 @@
         /* Brutalist / aframecycles.com Inspired Aesthetic */
         :root {
             --border-color: #000;
-            --bg-color: #f4f4f0; /* Slight off-white for harsh contrast */
+            --bg-color: #f4f4f0; 
             --text-color: #000;
             --font-stack: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --accent-color: #e60000; /* Brutalist Red for discounts */
         }
         
         * { 
@@ -33,13 +34,16 @@
         a { color: inherit; text-decoration: none; }
         a:hover { text-decoration: underline; }
         
-        /* Rigid Outer Grid Framework */
+        /* Desktop Constrained Wrapper */
         .wrapper { 
+            width: 92%; 
+            max-width: 1280px; 
+            margin: 4vh auto; 
             border: 1px solid var(--border-color); 
-            margin: 2vw; 
             display: flex; 
             flex-direction: column; 
-            min-height: 90vh;
+            min-height: 85vh; 
+            background-color: #fff; 
         }
         
         /* Header Segment */
@@ -71,6 +75,7 @@
             border-right: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
+            background: #f4f4f0;
         }
         
         /* Strict 1:1 Aspect Ratio Box */
@@ -127,17 +132,33 @@
         }
         
         .product-title { 
-            font-size: clamp(4rem, 8vw, 8rem); 
+            font-size: clamp(3.5rem, 6vw, 7rem); 
             font-weight: 800; 
             letter-spacing: -0.06em; 
             margin-bottom: 1rem; 
             line-height: 0.85; 
         }
         
+        /* Updated Pricing Styling */
         .product-price { 
-            font-size: 2.5rem; 
-            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
             margin-bottom: 2.5rem; 
+            flex-wrap: wrap;
+        }
+
+        .original-price {
+            font-size: 1.5rem;
+            font-weight: 500;
+            text-decoration: line-through;
+            color: #777; /* De-emphasized gray */
+        }
+
+        .discount-price {
+            font-size: 2.5rem; 
+            font-weight: 700;
+            color: var(--accent-color);
         }
         
         .product-desc { 
@@ -180,7 +201,7 @@
         
         /* Mobile Responsiveness */
         @media (max-width: 900px) {
-            .wrapper { margin: 0; border: none; }
+            .wrapper { width: 100%; margin: 0; border: none; min-height: 100vh; }
             .product-visual { border-right: none; border-bottom: 1px solid var(--border-color); }
             header { flex-direction: column; gap: 1.5rem; }
             nav { width: 100%; justify-content: space-between; }
@@ -212,7 +233,7 @@
         <main>
             <section class="product-visual">
                 <div class="slider-container">
-                    <img src="images/VertexGrips/VertexGrips-1.png" alt="Vertex Grips Angle 1" class="slide active">
+                    <img src="images/VertexGrips/VertexGrips-1.jpg" alt="Vertex Grips Angle 1" class="slide active">
                     <img src="images/VertexGrips/VertexGrips-2.jpg" alt="Vertex Grips Angle 2" class="slide">
                     <img src="images/VertexGrips/VertexGrips-3.jpg" alt="Vertex Grips Angle 3" class="slide">
                     <img src="images/VertexGrips/VertexGrips-4.jpg" alt="Vertex Grips Angle 4" class="slide">
@@ -227,7 +248,12 @@
             <section class="product-info">
                 <div>
                     <h1 class="product-title">VERTEX GRIPS</h1>
-                    <div class="product-price">IDR 115.000</div>
+                    
+                    <div class="product-price">
+                        <span class="original-price">IDR 135.000</span>
+                        <span class="discount-price">IDR 115.000</span>
+                    </div>
+
                     <p class="product-desc">Uncompromising control meets brutalist design. Precision-engineered for maximum tactile response and durability. Step into the new standard of hardware.</p>
                 </div>
                 
@@ -265,7 +291,7 @@
         // --- WhatsApp Cart Logic ---
         let cartQty = 0;
         
-        // ! IMPORTANT: REPLACE THIS NUMBER WITH YOUR WHATSAPP BUSINESS NUMBER
+        // DEFAULT WHATSAPP NUMBER UPDATED
         const whatsappNumber = "6289665774307"; 
         
         function updateCartDisplay() {
@@ -275,18 +301,20 @@
         function addToCart() {
             cartQty++;
             updateCartDisplay();
-            // Optional: Brutalist design typically avoids popups, but keeping standard alert for confirmation.
             alert("Vertex Grips added to cart.");
         }
 
         function checkoutNow() {
             let qtyToOrder = cartQty > 0 ? cartQty : 1; 
-            let message = `Hello Aeth3rius! I would like to order: %0A- ${qtyToOrder}x Vertex Grips%0A%0APlease let me know the total and payment details.`;
+            // Automatically calculating the total IDR for convenience in the WhatsApp message
+            let totalPrice = (qtyToOrder * 115).toLocaleString('id-ID'); 
+            
+            let message = `Hello Aeth3rius! I would like to order: %0A- ${qtyToOrder}x Vertex Grips (IDR 115.000)%0A%0A*Total: IDR ${totalPrice}.000*%0A%0APlease let me know the payment details and shipping process.`;
+            
             let whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
             window.open(whatsappUrl, '_blank');
         }
 
-        // --- Header Cart Button Trigger ---
         document.getElementById('cartTrigger').addEventListener('click', () => {
             if(cartQty > 0) {
                 checkoutNow();
