@@ -7,20 +7,16 @@
     <link rel="icon" type="image/webp" href="images/favicon.webp">
     
     <style>
-        /* Brutalist / aframecycles.com Inspired Aesthetic */
+        /* Brutalist Aesthetic */
         :root {
             --border-color: #000;
             --bg-color: #f4f4f0; 
             --text-color: #000;
             --font-stack: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            --accent-color: #e60000; /* Brutalist Red for discounts */
+            --accent-color: #e60000; 
         }
         
-        * { 
-            box-sizing: border-box; 
-            margin: 0; 
-            padding: 0; 
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body {
             background-color: var(--bg-color);
@@ -55,19 +51,30 @@
             padding: 1.5rem;
         }
         
-        .logo { 
+        .logo a { 
             font-size: 2.5rem; 
             font-weight: 800; 
             letter-spacing: -0.05em; 
+            text-decoration: none;
         }
+        .logo a:hover { color: var(--accent-color); text-decoration: none; }
         
         nav { display: flex; gap: 3rem; align-items: center; }
         .nav-links { display: flex; gap: 2rem; font-weight: 500; }
         .cart-btn { cursor: pointer; font-weight: bold; background: #000; color: #fff; padding: 0.5rem 1rem; border-radius: 50px; }
         .cart-btn:hover { background: #333; }
         
-        /* Split Screen Main Layout */
-        main { display: flex; flex-wrap: wrap; flex-grow: 1; }
+        /* Main Layout: Stacked Product Blocks */
+        main { display: flex; flex-direction: column; flex-grow: 1; }
+        
+        .product-block { 
+            display: flex; 
+            flex-wrap: wrap; 
+            border-bottom: 1px solid var(--border-color); 
+        }
+        /* Remove border from last product so it doesn't double up with the footer */
+        .product-block:last-child { border-bottom: none; } 
+        
         .product-visual, .product-info { flex: 1; min-width: 300px; }
         
         /* Left Side: Product Gallery */
@@ -97,9 +104,16 @@
             opacity: 0; 
             transition: opacity 0.15s ease-in-out;
         }
-        
         .slide.active { opacity: 1; z-index: 1; }
         
+        /* Image Placeholder for upcoming products */
+        .placeholder {
+            width: 100%; height: 100%;
+            display: flex; align-items: center; justify-content: center;
+            background-color: #e0e0e0; color: #777;
+            font-size: 1.5rem; font-weight: 800; text-align: center; padding: 2rem;
+        }
+
         .slider-controls {
             display: flex; 
             border-top: 1px solid var(--border-color);
@@ -123,7 +137,7 @@
         .slider-btn:last-child { border-right: none; }
         .slider-btn:hover { background: #000; color: #fff; }
 
-        /* Right Side: Brutalist Typography & Info */
+        /* Right Side: Typography & Info */
         .product-info {
             padding: 4rem 3rem; 
             display: flex; 
@@ -139,77 +153,43 @@
             line-height: 0.85; 
         }
         
-        /* Updated Pricing Styling */
         .product-price { 
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 2.5rem; 
-            flex-wrap: wrap;
+            display: flex; align-items: center; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap;
         }
-
-        .original-price {
-            font-size: 1.5rem;
-            font-weight: 500;
-            text-decoration: line-through;
-            color: #777; /* De-emphasized gray */
-        }
-
-        .discount-price {
-            font-size: 2.5rem; 
-            font-weight: 700;
-            color: var(--accent-color);
-        }
+        .original-price { font-size: 1.5rem; font-weight: 500; text-decoration: line-through; color: #777; }
+        .discount-price { font-size: 2.5rem; font-weight: 700; color: var(--accent-color); }
         
         .product-desc { 
-            font-size: 1.1rem; 
-            margin-bottom: 4rem; 
-            max-width: 90%; 
-            text-transform: none; 
-            line-height: 1.6; 
-            font-weight: 500;
+            font-size: 1.1rem; margin-bottom: 4rem; max-width: 90%; 
+            text-transform: none; line-height: 1.6; font-weight: 500;
         }
         
         /* Hard-Edged Buttons */
         .action-btns { display: flex; flex-direction: column; gap: 1rem; }
         .btn {
-            padding: 1.5rem; 
-            font-size: 1.2rem; 
-            font-family: inherit; 
-            text-transform: uppercase;
-            cursor: pointer; 
-            text-align: center; 
-            font-weight: 800; 
-            transition: all 0.2s;
+            padding: 1.5rem; font-size: 1.2rem; font-family: inherit; 
+            text-transform: uppercase; cursor: pointer; text-align: center; 
+            font-weight: 800; transition: all 0.2s;
         }
-        
         .btn-secondary { background: transparent; color: #000; border: 2px solid #000; }
         .btn-secondary:hover { background: #e0e0e0; }
-        
         .btn-primary { background: #000; color: #fff; border: 2px solid #000; }
         .btn-primary:hover { background: #fff; color: #000; }
         
         /* Footer Segment */
         footer { 
-            display: flex; 
-            justify-content: space-between; 
-            padding: 1.5rem; 
-            border-top: 1px solid var(--border-color); 
-            font-size: 0.9rem; 
-            font-weight: bold;
+            display: flex; justify-content: space-between; padding: 1.5rem; 
+            border-top: 1px solid var(--border-color); font-size: 0.9rem; font-weight: bold;
         }
         
         /* Mobile Responsiveness */
         @media (max-width: 900px) {
             .wrapper { width: 100%; margin: 0; border: none; min-height: 100vh; }
+            .product-block { flex-direction: column; }
             .product-visual { border-right: none; border-bottom: 1px solid var(--border-color); }
             header { flex-direction: column; gap: 1.5rem; }
             nav { width: 100%; justify-content: space-between; }
-            .nav-links { 
-                overflow-x: auto; 
-                white-space: nowrap; 
-                scrollbar-width: none; 
-            }
+            .nav-links { overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
             .nav-links::-webkit-scrollbar { display: none; }
             .product-info { padding: 2rem 1.5rem; }
             .product-title { font-size: 4rem; }
@@ -219,109 +199,163 @@
 <body>
     <div class="wrapper">
         <header>
-            <div class="logo">AETH3RIUS</div>
+            <div class="logo"><a href="https://instagram.com/aeth3rius" target="_blank" rel="noopener noreferrer">AETH3RIUS</a></div>
             <nav>
                 <div class="nav-links">
                     <a href="#">Shop</a>
                     <a href="#">About</a>
                     <a href="#">Journal</a>
                 </div>
-                <div class="cart-btn" id="cartTrigger">CART (<span id="cartCount">0</span>)</div>
+                <div class="cart-btn" onclick="checkoutCart()">CART (<span id="cartCount">0</span>)</div>
             </nav>
         </header>
 
         <main>
-            <section class="product-visual">
-                <div class="slider-container">
-                    <img src="images/VertexGrips/VertexGrips-1.png" alt="Vertex Grips Angle 1" class="slide active">
-                    <img src="images/VertexGrips/VertexGrips-2.jpg" alt="Vertex Grips Angle 2" class="slide">
-                    <img src="images/VertexGrips/VertexGrips-3.jpg" alt="Vertex Grips Angle 3" class="slide">
-                    <img src="images/VertexGrips/VertexGrips-4.jpg" alt="Vertex Grips Angle 4" class="slide">
-                    <img src="images/VertexGrips/VertexGrips-5.jpg" alt="Vertex Grips Angle 5" class="slide">
-                </div>
-                <div class="slider-controls">
-                    <button class="slider-btn" onclick="prevSlide()">Prev</button>
-                    <button class="slider-btn" onclick="nextSlide()">Next</button>
-                </div>
-            </section>
-
-            <section class="product-info">
-                <div>
-                    <h1 class="product-title">VERTEX GRIPS</h1>
-                    
-                    <div class="product-price">
-                        <span class="original-price">IDR 135.000</span>
-                        <span class="discount-price">IDR 115.000</span>
+            
+            <article class="product-block">
+                <section class="product-visual">
+                    <div class="slider-container" id="vertex-slider">
+                        <img src="images/VertexGrips/VertexGrips-1.jpg" alt="Vertex Grips Angle 1" class="slide active">
+                        <img src="images/VertexGrips/VertexGrips-2.jpg" alt="Vertex Grips Angle 2" class="slide">
+                        <img src="images/VertexGrips/VertexGrips-3.jpg" alt="Vertex Grips Angle 3" class="slide">
+                        <img src="images/VertexGrips/VertexGrips-4.jpg" alt="Vertex Grips Angle 4" class="slide">
+                        <img src="images/VertexGrips/VertexGrips-5.jpg" alt="Vertex Grips Angle 5" class="slide">
                     </div>
+                    <div class="slider-controls">
+                        <button class="slider-btn" onclick="moveSlide('vertex-slider', -1)">Prev</button>
+                        <button class="slider-btn" onclick="moveSlide('vertex-slider', 1)">Next</button>
+                    </div>
+                </section>
 
-                    <p class="product-desc">Uncompromising control meets brutalist design. Precision-engineered for maximum tactile response and durability. Step into the new standard of hardware.</p>
-                </div>
-                
-                <div class="action-btns">
-                    <button class="btn btn-secondary" onclick="addToCart()">Add to Cart</button>
-                    <button class="btn btn-primary" onclick="checkoutNow()">Order Now</button>
-                </div>
-            </section>
+                <section class="product-info">
+                    <div>
+                        <h1 class="product-title">VERTEX GRIPS</h1>
+                        <div class="product-price">
+                            <span class="original-price">IDR 135.000</span>
+                            <span class="discount-price">IDR 115.000</span>
+                        </div>
+                        <p class="product-desc">Uncompromising control meets brutalist design. Precision-engineered for maximum tactile response and durability. Step into the new standard of hardware.</p>
+                    </div>
+                    <div class="action-btns">
+                        <button class="btn btn-secondary" onclick="addToCart('Vertex Grips', 115)">Add to Cart</button>
+                        <button class="btn btn-primary" onclick="checkoutDirect('Vertex Grips', 115)">Order Now</button>
+                    </div>
+                </section>
+            </article>
+
+            <article class="product-block">
+                <section class="product-visual">
+                    <div class="slider-container">
+                        <div class="placeholder">IMAGE COMING SOON</div>
+                    </div>
+                    <div class="slider-controls" style="opacity: 0.3; pointer-events: none;">
+                        <button class="slider-btn">Prev</button>
+                        <button class="slider-btn">Next</button>
+                    </div>
+                </section>
+
+                <section class="product-info">
+                    <div>
+                        <h1 class="product-title">APEX GRIPS</h1>
+                        <div class="product-price">
+                            <span class="original-price">IDR 135.000</span>
+                            <span class="discount-price">IDR 115.000</span>
+                        </div>
+                        <p class="product-desc">Uncompromising control meets brutalist design. Precision-engineered for maximum tactile response and durability. Step into the new standard of hardware.</p>
+                    </div>
+                    <div class="action-btns">
+                        <button class="btn btn-secondary" onclick="addToCart('Apex Grips', 115)">Add to Cart</button>
+                        <button class="btn btn-primary" onclick="checkoutDirect('Apex Grips', 115)">Order Now</button>
+                    </div>
+                </section>
+            </article>
+
         </main>
 
         <footer>
             <div class="footer-links">
-                <a href="#" onclick="checkoutNow(); return false;">Shipping</a> &nbsp;&nbsp;|&nbsp;&nbsp; 
-                <a href="#" onclick="checkoutNow(); return false;">Returns</a>
+                <a href="https://wa.me/6289665774307" target="_blank">Shipping</a> &nbsp;&nbsp;|&nbsp;&nbsp; 
+                <a href="https://wa.me/6289665774307" target="_blank">Returns</a>
             </div>
             <div class="copyright">&copy; 2026 AETH3RIUS</div>
         </footer>
     </div>
 
     <script>
-        // --- Image Slider Logic ---
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        
-        function showSlide(index) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            if(index >= slides.length) currentSlide = 0;
-            if(index < 0) currentSlide = slides.length - 1;
-            slides[currentSlide].classList.add('active');
-        }
-        
-        function nextSlide() { currentSlide++; showSlide(currentSlide); }
-        function prevSlide() { currentSlide--; showSlide(currentSlide); }
+        // --- Multi-Slider Logic ---
+        function moveSlide(sliderId, direction) {
+            const container = document.getElementById(sliderId);
+            if (!container) return;
+            const slides = container.querySelectorAll('.slide');
+            if (slides.length === 0) return;
 
-        // --- WhatsApp Cart Logic ---
-        let cartQty = 0;
-        
-        // DEFAULT WHATSAPP NUMBER UPDATED
+            let activeIndex = Array.from(slides).findIndex(s => s.classList.contains('active'));
+            slides[activeIndex].classList.remove('active');
+
+            let newIndex = activeIndex + direction;
+            if (newIndex >= slides.length) newIndex = 0;
+            if (newIndex < 0) newIndex = slides.length - 1;
+
+            slides[newIndex].classList.add('active');
+        }
+
+        // --- Advanced Cart & WhatsApp Logic ---
         const whatsappNumber = "6289665774307"; 
         
-        function updateCartDisplay() {
-            document.getElementById('cartCount').innerText = cartQty;
+        // This object stores what products are in the cart
+        let cartState = {}; 
+
+        function updateCartUI() {
+            let totalItems = 0;
+            for (let item in cartState) {
+                totalItems += cartState[item].qty;
+            }
+            document.getElementById('cartCount').innerText = totalItems;
         }
 
-        function addToCart() {
-            cartQty++;
-            updateCartDisplay();
-            alert("Vertex Grips added to cart.");
+        // Adds a specific product to the cart
+        function addToCart(productName, price) {
+            if (!cartState[productName]) {
+                cartState[productName] = { qty: 0, price: price };
+            }
+            cartState[productName].qty++;
+            updateCartUI();
+            alert(`${productName} added to cart.`);
         }
 
-        function checkoutNow() {
-            let qtyToOrder = cartQty > 0 ? cartQty : 1; 
-            // Automatically calculating the total IDR for convenience in the WhatsApp message
-            let totalPrice = (qtyToOrder * 115).toLocaleString('id-ID'); 
-            
-            let message = `Hello Aeth3rius! I would like to order: %0A- ${qtyToOrder}x Vertex Grips (IDR 115.000)%0A%0A*Total: IDR ${totalPrice}.000*%0A%0APlease let me know the payment details and shipping process.`;
-            
+        // Send a specific item directly (bypassing cart)
+        function checkoutDirect(productName, price) {
+            let message = `Hello Aeth3rius! I would like to order:%0A- 1x ${productName} (IDR ${price}.000)%0A%0A*Total: IDR ${price}.000*%0A%0APlease let me know the payment details and shipping process.`;
             let whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
             window.open(whatsappUrl, '_blank');
         }
 
-        document.getElementById('cartTrigger').addEventListener('click', () => {
-            if(cartQty > 0) {
-                checkoutNow();
-            } else {
-                alert("Your cart is empty. Add a product first or click Order Now.");
+        // Checkout the entire cart
+        function checkoutCart() {
+            let totalItems = 0;
+            let totalPrice = 0;
+            let message = `Hello Aeth3rius! I would like to order:%0A`;
+
+            for (let product in cartState) {
+                if (cartState[product].qty > 0) {
+                    message += `- ${cartState[product].qty}x ${product} (IDR ${cartState[product].price}.000)%0A`;
+                    totalPrice += (cartState[product].qty * cartState[product].price);
+                    totalItems += cartState[product].qty;
+                }
             }
-        });
+
+            if (totalItems === 0) {
+                alert("Your cart is empty. Add a product first.");
+                return;
+            }
+
+            // Format total price correctly (e.g. 230 becomes 230.000)
+            let formattedTotal = totalPrice.toLocaleString('id-ID');
+            message += `%0A*Total: IDR ${formattedTotal}.000*%0A%0APlease let me know the payment details and shipping process.`;
+            
+            let whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+            window.open(whatsappUrl, '_blank');
+        }
     </script>
 </body>
 </html>
