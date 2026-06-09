@@ -1,549 +1,450 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aeth3rius — Custom Cycling Item</title>
-<meta name="description" content="Custom-made cycling grips designed and printed in Indonesia. Vertex Grips, Apex Grips, Vertex Short Grips.">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --black:#0d0d0d;
-  --white:#ffffff;
-  --off:#f5f4f0;
-  --gray:#8a8880;
-  --border:#e2e0db;
-  --cond:'Barlow Condensed',sans-serif;
-  --body:'Barlow',sans-serif;
-}
-body{font-family:var(--body);background:var(--white);color:var(--black);overflow-x:hidden}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aeth3rius — Custom Cycling Item</title>
+  <meta name="description" content="Custom-made cycling grips designed and printed in Indonesia. Vertex Grips, Apex Grips, Vertex Short Grips.">
+  
+  <link rel="icon" type="image/webp" href="images/favicon.webp">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --black:#0d0d0d;
+      --white:#ffffff;
+      --off:#f5f4f0;
+      --gray:#8a8880;
+      --border:#e2e0db;
+      --cond:'Barlow Condensed',sans-serif;
+      --body:'Barlow',sans-serif;
+    }
+    body{font-family:var(--body);background:var(--white);color:var(--black);overflow-x:hidden}
 
-nav{
-  position:sticky;top:0;z-index:100;
-  border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 2rem;height:52px;background:var(--white);
-}
-.nav-logo{
-  font-family:var(--cond);font-size:1.5rem;font-weight:800;
-  letter-spacing:0.08em;text-transform:uppercase;
-  color:var(--black);text-decoration:none;
-}
-.nav-logo span{font-weight:400;opacity:0.45}
-.nav-links{display:flex;gap:0;list-style:none}
-.nav-links a{
-  font-family:var(--cond);font-size:0.8125rem;font-weight:500;
-  letter-spacing:0.12em;text-transform:uppercase;
-  color:var(--black);text-decoration:none;
-  padding:0 1rem;line-height:52px;
-  border-right:1px solid var(--border);transition:background 0.15s;
-}
-.nav-links li:first-child a{border-left:1px solid var(--border)}
-.nav-links a:hover{background:var(--off)}
-.nav-right{display:flex;align-items:center;gap:0}
-.nav-ig{
-  font-family:var(--cond);font-size:0.75rem;letter-spacing:0.1em;
-  text-transform:uppercase;color:var(--gray);text-decoration:none;
-  padding:0 1rem;border-left:1px solid var(--border);line-height:52px;
-  transition:color 0.15s;
-}
-.nav-ig:hover{color:var(--black)}
-.nav-cart-btn{
-  font-family:var(--cond);font-size:0.8125rem;font-weight:600;
-  letter-spacing:0.12em;text-transform:uppercase;
-  background:var(--black);color:var(--white);border:none;
-  padding:0 1.25rem;height:52px;cursor:pointer;transition:opacity 0.15s;
-  display:flex;align-items:center;gap:8px;
-}
-.nav-cart-btn:hover{opacity:0.8}
+    nav{
+      position:sticky;top:0;z-index:100;
+      border-bottom:1px solid var(--border);
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 2rem;height:52px;background:var(--white);
+    }
+    .nav-logo{
+      font-family:var(--cond);font-size:1.5rem;font-weight:800;
+      letter-spacing:0.08em;text-transform:uppercase;
+      color:var(--black);text-decoration:none;
+    }
+    .nav-logo span{font-weight:400;opacity:0.45}
+    .nav-links{display:flex;gap:0;list-style:none}
+    .nav-links a{
+      font-family:var(--cond);font-size:0.8125rem;font-weight:500;
+      letter-spacing:0.12em;text-transform:uppercase;
+      color:var(--black);text-decoration:none;
+      padding:0 1rem;line-height:52px;
+      border-right:1px solid var(--border);transition:background 0.15s;
+    }
+    .nav-links li:first-child a{border-left:1px solid var(--border)}
+    .nav-links a:hover{background:var(--off)}
+    .nav-right{display:flex;align-items:center;gap:0}
+    .nav-ig{
+      font-family:var(--cond);font-size:0.75rem;letter-spacing:0.1em;
+      text-transform:uppercase;color:var(--gray);text-decoration:none;
+      padding:0 1rem;border-left:1px solid var(--border);line-height:52px;
+      transition:color 0.15s;
+    }
+    .nav-ig:hover{color:var(--black)}
+    .nav-cart-btn{
+      font-family:var(--cond);font-size:0.8125rem;font-weight:600;
+      letter-spacing:0.12em;text-transform:uppercase;
+      background:var(--black);color:var(--white);border:none;
+      padding:0 1.25rem;height:52px;cursor:pointer;transition:opacity 0.15s;
+      display:flex;align-items:center;gap:8px;
+    }
+    .nav-cart-btn:hover{opacity:0.8}
 
-.announce{
-  background:var(--black);color:var(--white);
-  padding:0.75rem 2rem;
-  display:flex;align-items:center;justify-content:space-between;
-  border-bottom:1px solid #222;
-}
-.announce p{
-  font-family:var(--cond);font-size:0.8125rem;font-weight:500;
-  letter-spacing:0.1em;text-transform:uppercase;
-}
-.announce a{
-  font-family:var(--cond);font-size:0.75rem;font-weight:700;
-  letter-spacing:0.15em;text-transform:uppercase;
-  color:var(--white);border-bottom:1px solid rgba(255,255,255,0.4);
-  text-decoration:none;transition:border-color 0.15s;
-}
-.announce a:hover{border-color:var(--white)}
+    .announce{
+      background:var(--black);color:var(--white);
+      padding:0.75rem 2rem;
+      display:flex;align-items:center;justify-content:space-between;
+      border-bottom:1px solid #222;
+    }
+    .announce p{
+      font-family:var(--cond);font-size:0.8125rem;font-weight:500;
+      letter-spacing:0.1em;text-transform:uppercase;
+    }
+    .announce a{
+      font-family:var(--cond);font-size:0.75rem;font-weight:700;
+      letter-spacing:0.15em;text-transform:uppercase;
+      color:var(--white);border-bottom:1px solid rgba(255,255,255,0.4);
+      text-decoration:none;transition:border-color 0.15s;
+    }
+    .announce a:hover{border-color:var(--white)}
 
-.hero{
-  display:grid;grid-template-columns:1fr 1fr;
-  border-bottom:1px solid var(--border);
-}
-.hero-left{
-  border-right:1px solid var(--border);
-  background:var(--off);min-height:520px;
-  display:flex;align-items:center;justify-content:center;
-  position:relative;overflow:hidden;
-}
-.hero-img-placeholder{
-  width:100%;height:100%;min-height:520px;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
-}
-.img-frame{
-  width:200px;height:260px;
-  border:1px dashed var(--border);
-  display:flex;align-items:center;justify-content:center;
-  flex-direction:column;gap:8px;
-}
-.img-frame svg{opacity:0.5}
-.img-frame span{
-  font-family:var(--cond);font-size:0.6875rem;letter-spacing:0.1em;
-  text-transform:uppercase;color:#b4b2a9;
-}
-.hero-label{
-  position:absolute;top:1.5rem;left:1.5rem;
-  font-family:var(--cond);font-size:0.6875rem;font-weight:600;
-  letter-spacing:0.2em;text-transform:uppercase;color:var(--gray);
-}
-.hero-right{
-  padding:3rem 2.5rem;
-  display:flex;flex-direction:column;justify-content:center;
-}
-.hero-tag{
-  font-family:var(--cond);font-size:0.6875rem;font-weight:600;
-  letter-spacing:0.2em;text-transform:uppercase;color:var(--gray);margin-bottom:1.25rem;
-}
-.hero-title{
-  font-family:var(--cond);font-size:clamp(3rem,5vw,5.5rem);
-  font-weight:800;line-height:0.92;text-transform:uppercase;
-  letter-spacing:-0.01em;margin-bottom:1.5rem;
-}
-.hero-title em{font-style:normal;color:var(--gray)}
-.hero-desc{
-  font-size:0.9375rem;line-height:1.65;font-weight:300;
-  color:#444;max-width:380px;margin-bottom:2rem;
-}
-.hero-price-row{
-  display:flex;align-items:center;gap:1rem;margin-bottom:2rem;
-  padding-bottom:2rem;border-bottom:1px solid var(--border);
-}
-.hero-price-main{font-family:var(--cond);font-size:2.5rem;font-weight:700;}
-.hero-price-orig{
-  font-family:var(--cond);font-size:1.125rem;color:var(--gray);text-decoration:line-through;
-}
-.hero-cta{display:flex;gap:0;}
-.btn-black{
-  font-family:var(--cond);font-size:0.8125rem;font-weight:700;
-  letter-spacing:0.15em;text-transform:uppercase;
-  background:var(--black);color:var(--white);
-  border:1px solid var(--black);padding:0.875rem 2rem;
-  cursor:pointer;transition:all 0.15s;text-decoration:none;
-  display:inline-flex;align-items:center;gap:8px;
-}
-.btn-black:hover{background:transparent;color:var(--black)}
-.btn-outline{
-  font-family:var(--cond);font-size:0.8125rem;font-weight:700;
-  letter-spacing:0.15em;text-transform:uppercase;
-  background:transparent;color:var(--black);
-  border:1px solid var(--border);border-left:none;
-  padding:0.875rem 2rem;cursor:pointer;transition:all 0.15s;
-  text-decoration:none;display:inline-flex;align-items:center;
-}
-.btn-outline:hover{border-color:var(--black)}
+    .hero{
+      display:grid;grid-template-columns:1fr 1fr;
+      border-bottom:1px solid var(--border);
+    }
+    .hero-left{
+      border-right:1px solid var(--border);
+      background:var(--off);min-height:520px;
+      display:flex;align-items:center;justify-content:center;
+      position:relative;overflow:hidden;
+    }
+    .hero-img-placeholder{
+      width:100%;height:100%;min-height:520px;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+    }
+    .hero-img-placeholder img {
+      width:100%;height:100%;object-fit:cover;
+    }
+    .hero-label{
+      position:absolute;top:1.5rem;left:1.5rem;z-index:2;
+      font-family:var(--cond);font-size:0.6875rem;font-weight:600;
+      letter-spacing:0.2em;text-transform:uppercase;color:var(--black);
+      background: rgba(255, 255, 255, 0.8); padding: 2px 6px;
+    }
+    .hero-right{
+      padding:3rem 2.5rem;
+      display:flex;flex-direction:column;justify-content:center;
+    }
+    .hero-tag{
+      font-family:var(--cond);font-size:0.6875rem;font-weight:600;
+      letter-spacing:0.2em;text-transform:uppercase;color:var(--gray);margin-bottom:1.25rem;
+    }
+    .hero-title{
+      font-family:var(--cond);font-size:clamp(3rem,5vw,5.5rem);
+      font-weight:800;line-height:0.92;text-transform:uppercase;
+      letter-spacing:-0.01em;margin-bottom:1.5rem;
+    }
+    .hero-title em{font-style:normal;color:var(--gray)}
+    .hero-desc{
+      font-size:0.9375rem;line-height:1.65;font-weight:300;
+      color:#444;max-width:380px;margin-bottom:2rem;
+    }
+    .hero-price-row{
+      display:flex;align-items:center;gap:1rem;margin-bottom:2rem;
+      padding-bottom:2rem;border-bottom:1px solid var(--border);
+    }
+    .hero-price-main{font-family:var(--cond);font-size:2.5rem;font-weight:700;}
+    .hero-price-orig{
+      font-family:var(--cond);font-size:1.125rem;color:var(--gray);text-decoration:line-through;
+    }
+    .hero-cta{display:flex;gap:0;}
+    .btn-black{
+      font-family:var(--cond);font-size:0.8125rem;font-weight:700;
+      letter-spacing:0.15em;text-transform:uppercase;
+      background:var(--black);color:var(--white);
+      border:1px solid var(--black);padding:0.875rem 2rem;
+      cursor:pointer;transition:all 0.15s;text-decoration:none;
+      display:inline-flex;align-items:center;gap:8px;
+    }
+    .btn-black:hover{background:transparent;color:var(--black)}
+    .btn-outline{
+      font-family:var(--cond);font-size:0.8125rem;font-weight:700;
+      letter-spacing:0.15em;text-transform:uppercase;
+      background:transparent;color:var(--black);
+      border:1px solid var(--border);border-left:none;
+      padding:0.875rem 2rem;cursor:pointer;transition:all 0.15s;
+      text-decoration:none;display:inline-flex;align-items:center;
+    }
+    .btn-outline:hover{border-color:var(--black)}
 
-.section-header{
-  padding:2rem 2rem 1.5rem;
-  border-bottom:1px solid var(--border);
-  display:flex;align-items:baseline;justify-content:space-between;
-}
-.section-title{
-  font-family:var(--cond);font-size:0.75rem;font-weight:700;
-  letter-spacing:0.2em;text-transform:uppercase;color:var(--gray);
-}
-.section-link{
-  font-family:var(--cond);font-size:0.75rem;font-weight:600;
-  letter-spacing:0.12em;text-transform:uppercase;
-  color:var(--black);text-decoration:none;border-bottom:1px solid var(--black);transition:opacity 0.15s;
-}
-.section-link:hover{opacity:0.5}
+    .section-header{
+      padding:2rem 2rem 1.5rem;
+      border-bottom:1px solid var(--border);
+      display:flex;align-items:baseline;justify-content:space-between;
+    }
+    .section-title{
+      font-family:var(--cond);font-size:0.75rem;font-weight:700;
+      letter-spacing:0.2em;text-transform:uppercase;color:var(--gray);
+    }
+    .section-link{
+      font-family:var(--cond);font-size:0.75rem;font-weight:600;
+      letter-spacing:0.12em;text-transform:uppercase;
+      color:var(--black);text-decoration:none;border-bottom:1px solid var(--black);transition:opacity 0.15s;
+    }
+    .section-link:hover{opacity:0.5}
 
-.products-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  border-bottom:1px solid var(--border);
-}
-.product-card{border-right:1px solid var(--border);}
-.product-card:last-child{border-right:none}
-.product-img{
-  background:var(--off);height:280px;
-  display:flex;align-items:center;justify-content:center;
-  border-bottom:1px solid var(--border);
-  position:relative;overflow:hidden;transition:background 0.2s;
-}
-.product-card:hover .product-img{background:#eceae4}
-.product-img-inner{
-  display:flex;flex-direction:column;align-items:center;gap:8px;
-  font-family:var(--cond);font-size:0.6875rem;letter-spacing:0.1em;
-  text-transform:uppercase;color:var(--gray);
-}
-.product-img img{
-  width:100%;height:100%;object-fit:cover;
-  position:absolute;top:0;left:0;
-}
-.product-badge{
-  position:absolute;top:12px;left:12px;z-index:2;
-  font-family:var(--cond);font-size:0.625rem;font-weight:700;
-  letter-spacing:0.15em;text-transform:uppercase;
-  background:var(--black);color:var(--white);padding:3px 8px;
-}
-.product-badge.sale{background:#c0392b}
-.product-badge.popular{background:var(--black)}
-.product-info{padding:1.25rem 1.5rem}
-.product-name{
-  font-family:var(--cond);font-size:1.125rem;font-weight:700;
-  text-transform:uppercase;letter-spacing:0.04em;
-  margin-bottom:0.25rem;line-height:1.2;
-}
-.product-sub{
-  font-family:var(--cond);font-size:0.75rem;letter-spacing:0.08em;
-  text-transform:uppercase;color:var(--gray);margin-bottom:0.75rem;
-}
-.price-row{display:flex;align-items:baseline;gap:0.5rem;}
-.product-price{font-family:var(--cond);font-size:1.125rem;font-weight:700;}
-.product-price-orig{
-  font-family:var(--cond);font-size:0.875rem;color:var(--gray);text-decoration:line-through;
-}
-.product-order-btn{
-  margin-top:0.875rem;width:100%;
-  font-family:var(--cond);font-size:0.75rem;font-weight:700;
-  letter-spacing:0.15em;text-transform:uppercase;
-  background:transparent;color:var(--black);
-  border:1px solid var(--border);padding:0.6rem;
-  cursor:pointer;transition:all 0.15s;
-}
-.product-order-btn:hover{background:var(--black);color:var(--white);border-color:var(--black)}
+    .products-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);
+      border-bottom:1px solid var(--border);
+    }
+    .product-card{border-right:1px solid var(--border);}
+    .product-card:last-child{border-right:none}
+    .product-img{
+      background:var(--off);height:280px;
+      display:flex;align-items:center;justify-content:center;
+      border-bottom:1px solid var(--border);
+      position:relative;overflow:hidden;transition:background 0.2s;
+    }
+    .product-card:hover .product-img{background:#eceae4}
+    .product-img img{
+      width:100%;height:100%;object-fit:cover;
+      position:absolute;top:0;left:0;
+    }
+    .product-badge{
+      position:absolute;top:12px;left:12px;z-index:2;
+      font-family:var(--cond);font-size:0.625rem;font-weight:700;
+      letter-spacing:0.15em;text-transform:uppercase;
+      background:var(--black);color:var(--white);padding:3px 8px;
+    }
+    .product-badge.sale{background:#c0392b}
+    .product-badge.popular{background:var(--black)}
+    .product-info{padding:1.25rem 1.5rem}
+    .product-name{
+      font-family:var(--cond);font-size:1.125rem;font-weight:700;
+      text-transform:uppercase;letter-spacing:0.04em;
+      margin-bottom:0.25rem;line-height:1.2;
+    }
+    .product-sub{
+      font-family:var(--cond);font-size:0.75rem;letter-spacing:0.08em;
+      text-transform:uppercase;color:var(--gray);margin-bottom:0.75rem;
+    }
+    .price-row{display:flex;align-items:baseline;gap:0.5rem;}
+    .product-price{font-family:var(--cond);font-size:1.125rem;font-weight:700;}
+    .product-price-orig{
+      font-family:var(--cond);font-size:0.875rem;color:var(--gray);text-decoration:line-through;
+    }
+    .product-order-btn{
+      margin-top:0.875rem;width:100%;
+      font-family:var(--cond);font-size:0.75rem;font-weight:700;
+      letter-spacing:0.15em;text-transform:uppercase;
+      background:transparent;color:var(--black);
+      border:1px solid var(--border);padding:0.6rem;
+      cursor:pointer;transition:all 0.15s;
+    }
+    .product-order-btn:hover{background:var(--black);color:var(--white);border-color:var(--black)}
 
-.wa-section{
-  display:grid;grid-template-columns:1fr 1fr;
-  border-bottom:1px solid var(--border);
-}
-.wa-left{
-  padding:3rem 2.5rem;border-right:1px solid var(--border);
-  display:flex;flex-direction:column;justify-content:center;
-}
-.wa-label{
-  font-family:var(--cond);font-size:0.6875rem;font-weight:700;
-  letter-spacing:0.2em;text-transform:uppercase;color:var(--gray);margin-bottom:1rem;
-}
-.wa-title{
-  font-family:var(--cond);font-size:2.25rem;font-weight:800;
-  text-transform:uppercase;line-height:1.05;margin-bottom:1rem;
-}
-.wa-desc{
-  font-size:0.9rem;line-height:1.65;font-weight:300;color:#444;margin-bottom:2rem;
-}
-.btn-wa{
-  display:inline-flex;align-items:center;gap:10px;
-  font-family:var(--cond);font-size:0.8125rem;font-weight:700;
-  letter-spacing:0.15em;text-transform:uppercase;
-  background:#25D366;color:var(--white);
-  border:none;padding:0.875rem 2rem;cursor:pointer;
-  transition:opacity 0.15s;text-decoration:none;width:fit-content;
-}
-.btn-wa:hover{opacity:0.85}
-.wa-right{
-  background:var(--off);padding:3rem 2.5rem;
-  display:flex;flex-direction:column;justify-content:center;gap:1.5rem;
-}
-.wa-info-item{display:flex;align-items:flex-start;gap:1rem;}
-.wa-info-num{
-  font-family:var(--cond);font-size:0.75rem;font-weight:700;
-  letter-spacing:0.1em;color:var(--gray);padding-top:2px;min-width:20px;
-}
-.wa-info-title{
-  font-family:var(--cond);font-size:1rem;font-weight:700;
-  text-transform:uppercase;letter-spacing:0.04em;margin-bottom:0.2rem;
-}
-.wa-info-desc{font-size:0.875rem;font-weight:300;color:#555;line-height:1.5;}
+    .wa-section{
+      display:grid;grid-template-columns:1fr 1fr;
+      border-bottom:1px solid var(--border);
+    }
+    .wa-left{
+      padding:3rem 2.5rem;border-right:1px solid var(--border);
+      display:flex;flex-direction:column;justify-content:center;
+    }
+    .wa-label{
+      font-family:var(--cond);font-size:0.6875rem;font-weight:700;
+      letter-spacing:0.2em;text-transform:uppercase;color:var(--gray);margin-bottom:1rem;
+    }
+    .wa-title{
+      font-family:var(--cond);font-size:2.25rem;font-weight:800;
+      text-transform:uppercase;line-height:1.05;margin-bottom:1rem;
+    }
+    .wa-desc{
+      font-size:0.9rem;line-height:1.65;font-weight:300;color:#444;margin-bottom:2rem;
+    }
+    .btn-wa{
+      display:inline-flex;align-items:center;gap:10px;
+      font-family:var(--cond);font-size:0.8125rem;font-weight:700;
+      letter-spacing:0.15em;text-transform:uppercase;
+      background:#25D366;color:var(--white);
+      border:none;padding:0.875rem 2rem;cursor:pointer;
+      transition:opacity 0.15s;text-decoration:none;width:fit-content;
+    }
+    .btn-wa:hover{opacity:0.85}
+    .wa-right{
+      background:var(--off);padding:3rem 2.5rem;
+      display:flex;flex-direction:column;justify-content:center;gap:1.5rem;
+    }
+    .wa-info-item{display:flex;align-items:flex-start;gap:1rem;}
+    .wa-info-num{
+      font-family:var(--cond);font-size:0.75rem;font-weight:700;
+      letter-spacing:0.1em;color:var(--gray);padding-top:2px;min-width:20px;
+    }
+    .wa-info-title{
+      font-family:var(--cond);font-size:1rem;font-weight:700;
+      text-transform:uppercase;letter-spacing:0.04em;margin-bottom:0.2rem;
+    }
+    .wa-info-desc{font-size:0.875rem;font-weight:300;color:#555;line-height:1.5;}
+    
+    .manifesto{
+      padding:4rem 2rem;
+      display:grid;grid-template-columns:1fr 2fr;
+      gap:3rem;border-bottom:1px solid var(--border);align-items:start;
+    }
+    .manifesto-label{
+      font-family:var(--cond);font-size:0.6875rem;font-weight:700;
+      letter-spacing:0.2em;text-transform:uppercase;color:var(--gray);padding-top:6px;
+    }
+    .manifesto-text{
+      font-family:var(--cond);font-size:clamp(1.75rem,3vw,2.75rem);
+      font-weight:700;text-transform:uppercase;line-height:1.1;letter-spacing:0.01em;
+    }
+    .manifesto-text em{font-style:normal;color:var(--gray)}
+    
+    footer{
+      display:grid;grid-template-columns:1fr 1fr 1fr;
+      border-top:1px solid var(--border);
+    }
+    .footer-col{padding:2rem;}
 
-.manifesto{
-  padding:4rem 2rem;
-  display:grid;grid-template-columns:1fr 2fr;
-  gap:3rem;border-bottom:1px solid var(--border);align-items:start;
-}
-.manifesto-label{
-  font-family:var(--cond);font-size:0.6875rem;font-weight:700;
-  letter-spacing:0.2em;text-transform:uppercase;color:var(--gray);padding-top:6px;
-}
-.manifesto-text{
-  font-family:var(--cond);font-size:clamp(1.75rem,3vw,2.75rem);
-  font-weight:700;text-transform:uppercase;line-height:1.1;letter-spacing:0.01em;
-}
-.manifesto-text em{font-style:normal;color:var(--gray)}
+    /* Toast Notification CSS */
+    .toast {
+      position: fixed; bottom: 20px; right: 20px;
+      background: var(--black); color: var(--white);
+      padding: 12px 24px; font-family: var(--cond);
+      font-size: 0.875rem; text-transform: uppercase;
+      letter-spacing: 0.1em; z-index: 1000;
+      display: none; border: 1px solid var(--border);
+    }
+    .toast.show { display: block; }
 
-footer{
-  display:grid;grid-template-columns:1fr 1fr 1fr;
-  border-top:1px solid var(--border);
-}
-.footer-col{padding:2rem;border-right:1px solid var(--border);}
-.footer-col:last-child{border-right:none}
-.footer-brand-name{
-  font-family:var(--cond);font-size:1.25rem;font-weight:800;
-  letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.5rem;
-}
-.footer-brand-name span{font-weight:400;opacity:0.4}
-.footer-brand-sub{font-size:0.875rem;font-weight:300;color:var(--gray);line-height:1.6;}
-.footer-col-title{
-  font-family:var(--cond);font-size:0.6875rem;font-weight:700;
-  letter-spacing:0.2em;text-transform:uppercase;color:var(--gray);margin-bottom:1rem;
-}
-.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.5rem}
-.footer-links a{
-  font-family:var(--cond);font-size:0.9375rem;font-weight:500;
-  letter-spacing:0.04em;text-transform:uppercase;
-  color:var(--black);text-decoration:none;transition:color 0.15s;
-}
-.footer-links a:hover{color:var(--gray)}
-.footer-copy{
-  padding:1rem 2rem;
-  display:flex;justify-content:space-between;align-items:center;
-  border-top:1px solid var(--border);
-}
-.footer-copy p{
-  font-family:var(--cond);font-size:0.75rem;letter-spacing:0.06em;
-  text-transform:uppercase;color:var(--gray);
-}
-
-.toast{
-  position:fixed;bottom:1.5rem;right:1.5rem;z-index:999;
-  background:var(--black);color:var(--white);
-  padding:0.875rem 1.5rem;
-  font-family:var(--cond);font-size:0.8125rem;font-weight:600;
-  letter-spacing:0.1em;text-transform:uppercase;
-  display:flex;align-items:center;gap:8px;
-  transform:translateY(80px);opacity:0;
-  transition:all 0.25s cubic-bezier(0.34,1.56,0.64,1);
-}
-.toast.show{transform:translateY(0);opacity:1}
-
-@media(max-width:768px){
-  nav{padding:0 1rem}
-  .nav-links{display:none}
-  .hero{grid-template-columns:1fr}
-  .hero-left{min-height:300px}
-  .products-grid{grid-template-columns:1fr}
-  .product-card{border-right:none;border-bottom:1px solid var(--border)}
-  .wa-section{grid-template-columns:1fr}
-  .wa-left{border-right:none;border-bottom:1px solid var(--border)}
-  .manifesto{grid-template-columns:1fr;gap:1rem}
-  footer{grid-template-columns:1fr}
-  .footer-col{border-right:none;border-bottom:1px solid var(--border)}
-  .footer-copy{flex-direction:column;gap:0.5rem;text-align:center}
-}
-</style>
+    /* Optimized Media Query Responsive Layout updates */
+    @media(max-width:768px){
+      nav { padding: 0 1rem; height: auto; flex-direction: column; align-items: stretch; }
+      .nav-top-row { display: flex; justify-content: space-between; align-items: center; height: 52px; }
+      .nav-links { 
+        display: flex; width: 100%; overflow-x: auto; 
+        border-top: 1px solid var(--border); scrollbar-width: none;
+      }
+      .nav-links::-webkit-scrollbar { display: none; }
+      .nav-links li { flex: 0 0 auto; }
+      .nav-links a { border-left: none !important; border-right: 1px solid var(--border); line-height: 40px; }
+      .hero{ grid-template-columns: 1fr; }
+      .hero-left{ min-height: 350px; }
+      .hero-img-placeholder{ min-height: 350px; }
+      .products-grid{ grid-template-columns: 1fr; }
+      .product-card{ border-right: none; border-bottom: 1px solid var(--border); }
+      .wa-section{ grid-template-columns: 1fr; }
+      .wa-left{ border-right: none; border-bottom: 1px solid var(--border); }
+      .manifesto{ grid-template-columns: 1fr; gap: 1rem; }
+      footer{ grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
-<nav>
-  <a class="nav-logo" href="#">AETH<span>3</span>RIUS</a>
-  <ul class="nav-links">
-    <li><a href="#products">Products</a></li>
-    <li><a href="#order">Custom</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="https://wa.me/6289665774307" target="_blank">Contact</a></li>
-  </ul>
-  <div class="nav-right">
-    <a class="nav-ig" href="https://instagram.com/aeth3rius" target="_blank">@aeth3rius</a>
-    <button class="nav-cart-btn" id="cartBtn">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-      Cart (<span id="cartCount">0</span>)
-    </button>
-  </div>
-</nav>
-
-<div class="announce">
-  <p>Sale on now — Vertex &amp; Apex Grips discounted</p>
-  <a href="https://wa.me/6289665774307" target="_blank">Order via WhatsApp →</a>
-</div>
-
-<section class="hero">
-  <div class="hero-left">
-    <span class="hero-label">Custom made · Indonesia</span>
-    <div class="hero-img-placeholder">
-      <div class="img-frame">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#b4b2a9" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        <span>Vertex Grips photo</span>
+  <nav>
+    <div class="nav-top-row">
+      <a href="#" class="nav-logo">Aeth3rius<span>.site</span></a>
+      <div class="nav-right">
+        <a href="https://instagram.com/aeth3rius" target="_blank" class="nav-ig">IG</a>
+        <button class="nav-cart-btn" id="cartBtn">
+          Cart (<span id="cartCount">0</span>)
+        </button>
       </div>
     </div>
-  </div>
-  <div class="hero-right">
-    <p class="hero-tag">Best seller · 2025</p>
-    <h1 class="hero-title">Grip the<br>road.<br><em>Your way.</em></h1>
-    <p class="hero-desc">Custom-made cycling grips built for performance and feel. Every set printed to order. Low volume, high precision — made in Indonesia.</p>
-    <div class="hero-price-row">
-      <span class="hero-price-main">Rp 115.000</span>
-      <span class="hero-price-orig">Rp 135.000</span>
-    </div>
-    <div class="hero-cta">
-      <button class="btn-black" onclick="addToCart('Vertex Grips')">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-        Add to cart
-      </button>
-      <a class="btn-outline" href="#products">View all</a>
-    </div>
-  </div>
-</section>
-
-<div class="section-header" id="products">
-  <span class="section-title">All products</span>
-  <a class="section-link" href="https://wa.me/6289665774307" target="_blank">Order via WhatsApp →</a>
-</div>
-
-<div class="products-grid">
-  <div class="product-card">
-    <div class="product-img">
-      <span class="product-badge popular">★ Popular</span>
-      <div class="product-img-inner">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b4b2a9" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        Photo
-      </div>
-    </div>
-    <div class="product-info">
-      <div class="product-name">Vertex Grips</div>
-      <div class="product-sub">Custom cycling grip · 3D Printed</div>
-      <div class="price-row">
-        <span class="product-price">Rp 115.000</span>
-        <span class="product-price-orig">Rp 135.000</span>
-      </div>
-      <button class="product-order-btn" onclick="addToCart('Vertex Grips')">Order Now</button>
-    </div>
-  </div>
-  <div class="product-card">
-    <div class="product-img">
-      <span class="product-badge sale">Sale</span>
-      <div class="product-img-inner">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b4b2a9" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        Photo
-      </div>
-    </div>
-    <div class="product-info">
-      <div class="product-name">Apex Grips</div>
-      <div class="product-sub">Custom cycling grip · 3D Printed</div>
-      <div class="price-row">
-        <span class="product-price">Rp 115.000</span>
-        <span class="product-price-orig">Rp 135.000</span>
-      </div>
-      <button class="product-order-btn" onclick="addToCart('Apex Grips')">Order Now</button>
-    </div>
-  </div>
-  <div class="product-card">
-    <div class="product-img">
-      <span class="product-badge sale">Sale</span>
-      <div class="product-img-inner">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b4b2a9" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        Photo
-      </div>
-    </div>
-    <div class="product-info">
-      <div class="product-name">Vertex Short Grips</div>
-      <div class="product-sub">Compact cycling grip · 3D Printed</div>
-      <div class="price-row">
-        <span class="product-price">Rp 95.000</span>
-        <span class="product-price-orig">Rp 115.000</span>
-      </div>
-      <button class="product-order-btn" onclick="addToCart('Vertex Short Grips')">Order Now</button>
-    </div>
-  </div>
-</div>
-
-<section class="wa-section" id="order">
-  <div class="wa-left">
-    <p class="wa-label">Order direct</p>
-    <h2 class="wa-title">Custom order?<br>Hit us up.</h2>
-    <p class="wa-desc">Want a specific color, length, or custom spec? We build to order. Drop us a message on WhatsApp and we'll get back to you fast.</p>
-    <a class="btn-wa" href="https://wa.me/6289665774307" target="_blank">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Chat on WhatsApp
-    </a>
-  </div>
-  <div class="wa-right">
-    <div class="wa-info-item">
-      <span class="wa-info-num">01</span>
-      <div>
-        <div class="wa-info-title">Send your order</div>
-        <div class="wa-info-desc">Tell us which grip, your preferred color or spec. We'll confirm availability and lead time.</div>
-      </div>
-    </div>
-    <div class="wa-info-item">
-      <span class="wa-info-num">02</span>
-      <div>
-        <div class="wa-info-title">We build it</div>
-        <div class="wa-info-desc">Each grip is 3D Printed to order. Lead time is typically 3–4 weeks from confirmation.</div>
-      </div>
-    </div>
-    <div class="wa-info-item">
-      <span class="wa-info-num">03</span>
-      <div>
-        <div class="wa-info-title">Shipped to you</div>
-        <div class="wa-info-desc">Nationwide shipping across Indonesia. Packaging designed to protect your order.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="manifesto" id="about">
-  <p class="manifesto-label">Our philosophy</p>
-  <p class="manifesto-text">Low volume.<br>High <em>precision.</em><br>Built to last.</p>
-</div>
-
-<footer>
-  <div class="footer-col">
-    <div class="footer-brand-name">AETH<span>3</span>RIUS</div>
-    <p class="footer-brand-sub">Custom cycling grips.<br>Made in Indonesia.</p>
-  </div>
-  <div class="footer-col">
-    <p class="footer-col-title">Navigate</p>
-    <ul class="footer-links">
+    <ul class="nav-links">
       <li><a href="#products">Products</a></li>
-      <li><a href="#order">Custom orders</a></li>
+      <li><a href="#custom">Custom Order</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="https://wa.me/6289665774307" target="_blank">Contact</a></li>
     </ul>
-  </div>
-  <div class="footer-col">
-    <p class="footer-col-title">Connect</p>
-    <ul class="footer-links">
-      <li><a href="https://instagram.com/aeth3rius" target="_blank">Instagram</a></li>
-      <li><a href="https://wa.me/6289665774307" target="_blank">WhatsApp</a></li>
-      <li><a href="#">Shipping info</a></li>
-      <li><a href="#">Returns</a></li>
-    </ul>
-  </div>
-</footer>
-<div class="footer-copy">
-  <p>© 2025 Aeth3rius. All rights reserved.</p>
-  <p>Custom made · Indonesia</p>
-</div>
+  </nav>
 
-<div class="toast" id="toast">
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-  <span id="toastMsg">Added to cart</span>
-</div>
+  <div class="announce">
+    <p>Vertex Grips Gen 2 Now Available</p>
+    <a href="#products">Shop Now</a>
+  </div>
 
-<script>
-let count = 0;
-function addToCart(name){
-  count++;
-  document.getElementById('cartCount').textContent = count;
-  document.getElementById('toastMsg').textContent = name + ' added to cart';
-  const t = document.getElementById('toast');
-  t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),2500);
-}
-document.getElementById('cartBtn').addEventListener('click',()=>{
-  if(count > 0) alert(count+' item(s) in your cart.');
-  else alert('Your cart is empty.');
-});
-</script>
+  <section class="hero">
+    <div class="hero-left">
+      <span class="hero-label">Featured Item</span>
+      <div class="hero-img-placeholder">
+        <img src="images/VertexGrips/VertexGrips-1.png" alt="Aeth3rius Vertex Grips Custom Cycling Gear">
+      </div>
+    </div>
+    <div class="hero-right">
+      <span class="hero-tag">3D Printed Innovation</span>
+      <h1 class="hero-title">Vertex<br>Grips <em>V2</em></h1>
+      <p class="hero-desc">Engineered for supreme bike tactile responsiveness. Locally developed, precision custom-made modular patterns constructed for performance handling.</p>
+      <div class="hero-price-row">
+        <span class="hero-price-main">IDR 150.000</span>
+        <span class="hero-price-orig">IDR 185.000</span>
+      </div>
+      <div class="hero-cta">
+        <button class="btn-black" onclick="addToCart('Vertex Grips V2 (Featured)')">Order Now</button>
+        <a href="#products" class="btn-outline">View Catalog</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-header" id="products">
+    <span class="section-title">Available Models / Catalog</span>
+    <a href="#" class="section-link">View All</a>
+  </div>
+
+  <section class="products-grid">
+    <div class="product-card">
+      <div class="product-img">
+        <span class="product-badge sale">Sale</span>
+        <img src="images/VertexGrips/VertexGrips-2.jpg" alt="Vertex Grips Standard Custom Edition">
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Vertex Grips</h3>
+        <p class="product-sub">Standard Length / Aero Grip</p>
+        <div class="price-row">
+          <span class="product-price">IDR 150.000</span>
+          <span class="product-price-orig">IDR 185.000</span>
+        </div>
+        <button class="product-order-btn" onclick="addToCart('Vertex Grips Standard')">Add To Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <span class="product-badge popular">New</span>
+        <img src="images/VertexGrips/VertexGrips-3.jpg" alt="Apex Grips Specialized Pro Edition">
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Apex Grips</h3>
+        <p class="product-sub">Ergonomic Profile Comfort</p>
+        <div class="price-row">
+          <span class="product-price">IDR 165.000</span>
+        </div>
+        <button class="product-order-btn" onclick="addToCart('Apex Grips Ergonomic')">Add To Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <img src="images/VertexGrips/VertexGrips-4.jpg" alt="Vertex Short Grips Track Configuration">
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Vertex Short</h3>
+        <p class="product-sub">Short Configuration / Track</p>
+        <div class="price-row">
+          <span class="product-price">IDR 140.000</span>
+        </div>
+        <button class="product-order-btn" onclick="addToCart('Vertex Short Grips')">Add To Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="toast" id="toast">Item Added Successfully</div>
+
+  <script>
+    // Cart Items State Storage Array Logic
+    let cartItems = [];
+
+    function addToCart(itemName) {
+      cartItems.push(itemName);
+      
+      // Update Navbar Cart Counter Value
+      document.getElementById('cartCount').textContent = cartItems.length;
+      
+      // Trigger Beautiful Custom Pop-up Toast Element Instead of Default Windows Alert
+      const toast = document.getElementById('toast');
+      toast.textContent = itemName + " added to cart";
+      toast.classList.add('show');
+      
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2000);
+    }
+
+    // Connects WhatsApp Dispatch API Directly to the main Nav Cart Button
+    document.getElementById('cartBtn').addEventListener('click', () => {
+      if (cartItems.length > 0) {
+        let compiledList = cartItems.join(', ');
+        let customMessage = `Hello Aeth3rius, I would like to place an order for the following items: ${compiledList}. Please let me know the next steps!`;
+        let encodedURI = encodeURIComponent(customMessage);
+        
+        // Triggers WhatsApp chat redirect dynamically
+        window.open(`https://wa.me/6289665774307?text=${encodedURI}`, '_blank');
+      } else {
+        alert("Your cart is empty. Choose a product from the catalog before checking out!");
+      }
+    });
+  </script>
 </body>
 </html>
