@@ -1,450 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aeth3rius — Custom Cycling Item</title>
-  <meta name="description" content="Custom-made cycling grips designed and printed in Indonesia. Vertex Grips, Apex Grips, Vertex Short Grips.">
-  
-  <link rel="icon" type="image/webp" href="images/favicon.webp">
-  
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --black:#0d0d0d;
-      --white:#ffffff;
-      --off:#f5f4f0;
-      --gray:#8a8880;
-      --border:#e2e0db;
-      --cond:'Barlow Condensed',sans-serif;
-      --body:'Barlow',sans-serif;
-    }
-    body{font-family:var(--body);background:var(--white);color:var(--black);overflow-x:hidden}
-
-    nav{
-      position:sticky;top:0;z-index:100;
-      border-bottom:1px solid var(--border);
-      display:flex;align-items:center;justify-content:space-between;
-      padding:0 2rem;height:52px;background:var(--white);
-    }
-    .nav-logo{
-      font-family:var(--cond);font-size:1.5rem;font-weight:800;
-      letter-spacing:0.08em;text-transform:uppercase;
-      color:var(--black);text-decoration:none;
-    }
-    .nav-logo span{font-weight:400;opacity:0.45}
-    .nav-links{display:flex;gap:0;list-style:none}
-    .nav-links a{
-      font-family:var(--cond);font-size:0.8125rem;font-weight:500;
-      letter-spacing:0.12em;text-transform:uppercase;
-      color:var(--black);text-decoration:none;
-      padding:0 1rem;line-height:52px;
-      border-right:1px solid var(--border);transition:background 0.15s;
-    }
-    .nav-links li:first-child a{border-left:1px solid var(--border)}
-    .nav-links a:hover{background:var(--off)}
-    .nav-right{display:flex;align-items:center;gap:0}
-    .nav-ig{
-      font-family:var(--cond);font-size:0.75rem;letter-spacing:0.1em;
-      text-transform:uppercase;color:var(--gray);text-decoration:none;
-      padding:0 1rem;border-left:1px solid var(--border);line-height:52px;
-      transition:color 0.15s;
-    }
-    .nav-ig:hover{color:var(--black)}
-    .nav-cart-btn{
-      font-family:var(--cond);font-size:0.8125rem;font-weight:600;
-      letter-spacing:0.12em;text-transform:uppercase;
-      background:var(--black);color:var(--white);border:none;
-      padding:0 1.25rem;height:52px;cursor:pointer;transition:opacity 0.15s;
-      display:flex;align-items:center;gap:8px;
-    }
-    .nav-cart-btn:hover{opacity:0.8}
-
-    .announce{
-      background:var(--black);color:var(--white);
-      padding:0.75rem 2rem;
-      display:flex;align-items:center;justify-content:space-between;
-      border-bottom:1px solid #222;
-    }
-    .announce p{
-      font-family:var(--cond);font-size:0.8125rem;font-weight:500;
-      letter-spacing:0.1em;text-transform:uppercase;
-    }
-    .announce a{
-      font-family:var(--cond);font-size:0.75rem;font-weight:700;
-      letter-spacing:0.15em;text-transform:uppercase;
-      color:var(--white);border-bottom:1px solid rgba(255,255,255,0.4);
-      text-decoration:none;transition:border-color 0.15s;
-    }
-    .announce a:hover{border-color:var(--white)}
-
-    .hero{
-      display:grid;grid-template-columns:1fr 1fr;
-      border-bottom:1px solid var(--border);
-    }
-    .hero-left{
-      border-right:1px solid var(--border);
-      background:var(--off);min-height:520px;
-      display:flex;align-items:center;justify-content:center;
-      position:relative;overflow:hidden;
-    }
-    .hero-img-placeholder{
-      width:100%;height:100%;min-height:520px;
-      display:flex;flex-direction:column;align-items:center;justify-content:center;
-    }
-    .hero-img-placeholder img {
-      width:100%;height:100%;object-fit:cover;
-    }
-    .hero-label{
-      position:absolute;top:1.5rem;left:1.5rem;z-index:2;
-      font-family:var(--cond);font-size:0.6875rem;font-weight:600;
-      letter-spacing:0.2em;text-transform:uppercase;color:var(--black);
-      background: rgba(255, 255, 255, 0.8); padding: 2px 6px;
-    }
-    .hero-right{
-      padding:3rem 2.5rem;
-      display:flex;flex-direction:column;justify-content:center;
-    }
-    .hero-tag{
-      font-family:var(--cond);font-size:0.6875rem;font-weight:600;
-      letter-spacing:0.2em;text-transform:uppercase;color:var(--gray);margin-bottom:1.25rem;
-    }
-    .hero-title{
-      font-family:var(--cond);font-size:clamp(3rem,5vw,5.5rem);
-      font-weight:800;line-height:0.92;text-transform:uppercase;
-      letter-spacing:-0.01em;margin-bottom:1.5rem;
-    }
-    .hero-title em{font-style:normal;color:var(--gray)}
-    .hero-desc{
-      font-size:0.9375rem;line-height:1.65;font-weight:300;
-      color:#444;max-width:380px;margin-bottom:2rem;
-    }
-    .hero-price-row{
-      display:flex;align-items:center;gap:1rem;margin-bottom:2rem;
-      padding-bottom:2rem;border-bottom:1px solid var(--border);
-    }
-    .hero-price-main{font-family:var(--cond);font-size:2.5rem;font-weight:700;}
-    .hero-price-orig{
-      font-family:var(--cond);font-size:1.125rem;color:var(--gray);text-decoration:line-through;
-    }
-    .hero-cta{display:flex;gap:0;}
-    .btn-black{
-      font-family:var(--cond);font-size:0.8125rem;font-weight:700;
-      letter-spacing:0.15em;text-transform:uppercase;
-      background:var(--black);color:var(--white);
-      border:1px solid var(--black);padding:0.875rem 2rem;
-      cursor:pointer;transition:all 0.15s;text-decoration:none;
-      display:inline-flex;align-items:center;gap:8px;
-    }
-    .btn-black:hover{background:transparent;color:var(--black)}
-    .btn-outline{
-      font-family:var(--cond);font-size:0.8125rem;font-weight:700;
-      letter-spacing:0.15em;text-transform:uppercase;
-      background:transparent;color:var(--black);
-      border:1px solid var(--border);border-left:none;
-      padding:0.875rem 2rem;cursor:pointer;transition:all 0.15s;
-      text-decoration:none;display:inline-flex;align-items:center;
-    }
-    .btn-outline:hover{border-color:var(--black)}
-
-    .section-header{
-      padding:2rem 2rem 1.5rem;
-      border-bottom:1px solid var(--border);
-      display:flex;align-items:baseline;justify-content:space-between;
-    }
-    .section-title{
-      font-family:var(--cond);font-size:0.75rem;font-weight:700;
-      letter-spacing:0.2em;text-transform:uppercase;color:var(--gray);
-    }
-    .section-link{
-      font-family:var(--cond);font-size:0.75rem;font-weight:600;
-      letter-spacing:0.12em;text-transform:uppercase;
-      color:var(--black);text-decoration:none;border-bottom:1px solid var(--black);transition:opacity 0.15s;
-    }
-    .section-link:hover{opacity:0.5}
-
-    .products-grid{
-      display:grid;grid-template-columns:repeat(3,1fr);
-      border-bottom:1px solid var(--border);
-    }
-    .product-card{border-right:1px solid var(--border);}
-    .product-card:last-child{border-right:none}
-    .product-img{
-      background:var(--off);height:280px;
-      display:flex;align-items:center;justify-content:center;
-      border-bottom:1px solid var(--border);
-      position:relative;overflow:hidden;transition:background 0.2s;
-    }
-    .product-card:hover .product-img{background:#eceae4}
-    .product-img img{
-      width:100%;height:100%;object-fit:cover;
-      position:absolute;top:0;left:0;
-    }
-    .product-badge{
-      position:absolute;top:12px;left:12px;z-index:2;
-      font-family:var(--cond);font-size:0.625rem;font-weight:700;
-      letter-spacing:0.15em;text-transform:uppercase;
-      background:var(--black);color:var(--white);padding:3px 8px;
-    }
-    .product-badge.sale{background:#c0392b}
-    .product-badge.popular{background:var(--black)}
-    .product-info{padding:1.25rem 1.5rem}
-    .product-name{
-      font-family:var(--cond);font-size:1.125rem;font-weight:700;
-      text-transform:uppercase;letter-spacing:0.04em;
-      margin-bottom:0.25rem;line-height:1.2;
-    }
-    .product-sub{
-      font-family:var(--cond);font-size:0.75rem;letter-spacing:0.08em;
-      text-transform:uppercase;color:var(--gray);margin-bottom:0.75rem;
-    }
-    .price-row{display:flex;align-items:baseline;gap:0.5rem;}
-    .product-price{font-family:var(--cond);font-size:1.125rem;font-weight:700;}
-    .product-price-orig{
-      font-family:var(--cond);font-size:0.875rem;color:var(--gray);text-decoration:line-through;
-    }
-    .product-order-btn{
-      margin-top:0.875rem;width:100%;
-      font-family:var(--cond);font-size:0.75rem;font-weight:700;
-      letter-spacing:0.15em;text-transform:uppercase;
-      background:transparent;color:var(--black);
-      border:1px solid var(--border);padding:0.6rem;
-      cursor:pointer;transition:all 0.15s;
-    }
-    .product-order-btn:hover{background:var(--black);color:var(--white);border-color:var(--black)}
-
-    .wa-section{
-      display:grid;grid-template-columns:1fr 1fr;
-      border-bottom:1px solid var(--border);
-    }
-    .wa-left{
-      padding:3rem 2.5rem;border-right:1px solid var(--border);
-      display:flex;flex-direction:column;justify-content:center;
-    }
-    .wa-label{
-      font-family:var(--cond);font-size:0.6875rem;font-weight:700;
-      letter-spacing:0.2em;text-transform:uppercase;color:var(--gray);margin-bottom:1rem;
-    }
-    .wa-title{
-      font-family:var(--cond);font-size:2.25rem;font-weight:800;
-      text-transform:uppercase;line-height:1.05;margin-bottom:1rem;
-    }
-    .wa-desc{
-      font-size:0.9rem;line-height:1.65;font-weight:300;color:#444;margin-bottom:2rem;
-    }
-    .btn-wa{
-      display:inline-flex;align-items:center;gap:10px;
-      font-family:var(--cond);font-size:0.8125rem;font-weight:700;
-      letter-spacing:0.15em;text-transform:uppercase;
-      background:#25D366;color:var(--white);
-      border:none;padding:0.875rem 2rem;cursor:pointer;
-      transition:opacity 0.15s;text-decoration:none;width:fit-content;
-    }
-    .btn-wa:hover{opacity:0.85}
-    .wa-right{
-      background:var(--off);padding:3rem 2.5rem;
-      display:flex;flex-direction:column;justify-content:center;gap:1.5rem;
-    }
-    .wa-info-item{display:flex;align-items:flex-start;gap:1rem;}
-    .wa-info-num{
-      font-family:var(--cond);font-size:0.75rem;font-weight:700;
-      letter-spacing:0.1em;color:var(--gray);padding-top:2px;min-width:20px;
-    }
-    .wa-info-title{
-      font-family:var(--cond);font-size:1rem;font-weight:700;
-      text-transform:uppercase;letter-spacing:0.04em;margin-bottom:0.2rem;
-    }
-    .wa-info-desc{font-size:0.875rem;font-weight:300;color:#555;line-height:1.5;}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aetherius | Vertex Grips</title>
+    <meta name="description" content="Premium Vertex Grips. Minimalist design, maximum performance. Order directly via WhatsApp.">
+    <link rel="icon" type="image/webp" href="images/favicon.webp">
     
-    .manifesto{
-      padding:4rem 2rem;
-      display:grid;grid-template-columns:1fr 2fr;
-      gap:3rem;border-bottom:1px solid var(--border);align-items:start;
-    }
-    .manifesto-label{
-      font-family:var(--cond);font-size:0.6875rem;font-weight:700;
-      letter-spacing:0.2em;text-transform:uppercase;color:var(--gray);padding-top:6px;
-    }
-    .manifesto-text{
-      font-family:var(--cond);font-size:clamp(1.75rem,3vw,2.75rem);
-      font-weight:700;text-transform:uppercase;line-height:1.1;letter-spacing:0.01em;
-    }
-    .manifesto-text em{font-style:normal;color:var(--gray)}
-    
-    footer{
-      display:grid;grid-template-columns:1fr 1fr 1fr;
-      border-top:1px solid var(--border);
-    }
-    .footer-col{padding:2rem;}
+    <style>
+        /* CSS Reset & Brutalist Variables */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --border-color: #000000;
+            --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
 
-    /* Toast Notification CSS */
-    .toast {
-      position: fixed; bottom: 20px; right: 20px;
-      background: var(--black); color: var(--white);
-      padding: 12px 24px; font-family: var(--cond);
-      font-size: 0.875rem; text-transform: uppercase;
-      letter-spacing: 0.1em; z-index: 1000;
-      display: none; border: 1px solid var(--border);
-    }
-    .toast.show { display: block; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    /* Optimized Media Query Responsive Layout updates */
-    @media(max-width:768px){
-      nav { padding: 0 1rem; height: auto; flex-direction: column; align-items: stretch; }
-      .nav-top-row { display: flex; justify-content: space-between; align-items: center; height: 52px; }
-      .nav-links { 
-        display: flex; width: 100%; overflow-x: auto; 
-        border-top: 1px solid var(--border); scrollbar-width: none;
-      }
-      .nav-links::-webkit-scrollbar { display: none; }
-      .nav-links li { flex: 0 0 auto; }
-      .nav-links a { border-left: none !important; border-right: 1px solid var(--border); line-height: 40px; }
-      .hero{ grid-template-columns: 1fr; }
-      .hero-left{ min-height: 350px; }
-      .hero-img-placeholder{ min-height: 350px; }
-      .products-grid{ grid-template-columns: 1fr; }
-      .product-card{ border-right: none; border-bottom: 1px solid var(--border); }
-      .wa-section{ grid-template-columns: 1fr; }
-      .wa-left{ border-right: none; border-bottom: 1px solid var(--border); }
-      .manifesto{ grid-template-columns: 1fr; gap: 1rem; }
-      footer{ grid-template-columns: 1fr; }
-    }
-  </style>
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            border-bottom: 2px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            background: var(--bg-color);
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a, .cart-btn {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .nav-links a:hover, .cart-btn:hover {
+            text-decoration: underline;
+        }
+
+        /* Product Layout (CSS Grid) */
+        .product-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: calc(100vh - 80px);
+        }
+
+        /* Slideable Image Gallery */
+        .gallery-section {
+            border-right: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background-color: #f9f9f9;
+        }
+
+        .slider-wrapper {
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            border: 2px solid var(--border-color);
+            /* Hide scrollbar for a cleaner look */
+            -ms-overflow-style: none;  
+            scrollbar-width: none;  
+        }
+
+        .slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .slider img {
+            flex: 0 0 100%;
+            scroll-snap-align: center;
+            /* CRITICAL: Enforcing 1:1 Aspect Ratio */
+            aspect-ratio: 1 / 1;
+            object-fit: cover; 
+            width: 100%;
+            display: block;
+        }
+
+        .slider-instructions {
+            text-align: center;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-top: 1rem;
+            color: #666;
+            letter-spacing: 1px;
+        }
+
+        /* Product Details */
+        .details-section {
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1.product-title {
+            font-size: 4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            max-width: 400px;
+        }
+
+        /* Action Buttons */
+        .btn {
+            display: inline-block;
+            width: 100%;
+            max-width: 400px;
+            padding: 1.2rem;
+            text-align: center;
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 1rem;
+            border: 2px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 2px solid var(--border-color);
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        footer a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 1rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsiveness */
+        @media(max-width: 900px) {
+            .product-container {
+                grid-template-columns: 1fr;
+            }
+            .gallery-section {
+                border-right: none;
+                border-bottom: 2px solid var(--border-color);
+                padding: 1rem;
+            }
+            .details-section {
+                padding: 2rem;
+            }
+            h1.product-title {
+                font-size: 2.5rem;
+            }
+            .nav-links {
+                display: none; /* Can be replaced with a horizontal scroll menu later */
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <nav>
-    <div class="nav-top-row">
-      <a href="#" class="nav-logo">Aeth3rius<span>.site</span></a>
-      <div class="nav-right">
-        <a href="https://instagram.com/aeth3rius" target="_blank" class="nav-ig">IG</a>
-        <button class="nav-cart-btn" id="cartBtn">
-          Cart (<span id="cartCount">0</span>)
-        </button>
-      </div>
-    </div>
-    <ul class="nav-links">
-      <li><a href="#products">Products</a></li>
-      <li><a href="#custom">Custom Order</a></li>
-      <li><a href="#about">About</a></li>
-    </ul>
-  </nav>
+    <header>
+        <a href="#" class="logo">Aetherius</a>
+        <nav class="nav-links">
+            <a href="#">Products</a>
+            <a href="#">About</a>
+        </nav>
+        <button class="cart-btn" onclick="checkoutWhatsApp()">Cart (0)</button>
+    </header>
 
-  <div class="announce">
-    <p>Vertex Grips Gen 2 Now Available</p>
-    <a href="#products">Shop Now</a>
-  </div>
-
-  <section class="hero">
-    <div class="hero-left">
-      <span class="hero-label">Featured Item</span>
-      <div class="hero-img-placeholder">
-        <img src="images/VertexGrips/VertexGrips-1.png" alt="Aeth3rius Vertex Grips Custom Cycling Gear">
-      </div>
-    </div>
-    <div class="hero-right">
-      <span class="hero-tag">3D Printed Innovation</span>
-      <h1 class="hero-title">Vertex<br>Grips <em>V2</em></h1>
-      <p class="hero-desc">Engineered for supreme bike tactile responsiveness. Locally developed, precision custom-made modular patterns constructed for performance handling.</p>
-      <div class="hero-price-row">
-        <span class="hero-price-main">IDR 150.000</span>
-        <span class="hero-price-orig">IDR 185.000</span>
-      </div>
-      <div class="hero-cta">
-        <button class="btn-black" onclick="addToCart('Vertex Grips V2 (Featured)')">Order Now</button>
-        <a href="#products" class="btn-outline">View Catalog</a>
-      </div>
-    </div>
-  </section>
-
-  <div class="section-header" id="products">
-    <span class="section-title">Available Models / Catalog</span>
-    <a href="#" class="section-link">View All</a>
-  </div>
-
-  <section class="products-grid">
-    <div class="product-card">
-      <div class="product-img">
-        <span class="product-badge sale">Sale</span>
-        <img src="images/VertexGrips/VertexGrips-2.jpg" alt="Vertex Grips Standard Custom Edition">
-      </div>
-      <div class="product-info">
-        <h3 class="product-name">Vertex Grips</h3>
-        <p class="product-sub">Standard Length / Aero Grip</p>
-        <div class="price-row">
-          <span class="product-price">IDR 150.000</span>
-          <span class="product-price-orig">IDR 185.000</span>
-        </div>
-        <button class="product-order-btn" onclick="addToCart('Vertex Grips Standard')">Add To Cart</button>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-img">
-        <span class="product-badge popular">New</span>
-        <img src="images/VertexGrips/VertexGrips-3.jpg" alt="Apex Grips Specialized Pro Edition">
-      </div>
-      <div class="product-info">
-        <h3 class="product-name">Apex Grips</h3>
-        <p class="product-sub">Ergonomic Profile Comfort</p>
-        <div class="price-row">
-          <span class="product-price">IDR 165.000</span>
-        </div>
-        <button class="product-order-btn" onclick="addToCart('Apex Grips Ergonomic')">Add To Cart</button>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-img">
-        <img src="images/VertexGrips/VertexGrips-4.jpg" alt="Vertex Short Grips Track Configuration">
-      </div>
-      <div class="product-info">
-        <h3 class="product-name">Vertex Short</h3>
-        <p class="product-sub">Short Configuration / Track</p>
-        <div class="price-row">
-          <span class="product-price">IDR 140.000</span>
-        </div>
-        <button class="product-order-btn" onclick="addToCart('Vertex Short Grips')">Add To Cart</button>
-      </div>
-    </div>
-  </section>
-
-  <div class="toast" id="toast">Item Added Successfully</div>
-
-  <script>
-    // Cart Items State Storage Array Logic
-    let cartItems = [];
-
-    function addToCart(itemName) {
-      cartItems.push(itemName);
-      
-      // Update Navbar Cart Counter Value
-      document.getElementById('cartCount').textContent = cartItems.length;
-      
-      // Trigger Beautiful Custom Pop-up Toast Element Instead of Default Windows Alert
-      const toast = document.getElementById('toast');
-      toast.textContent = itemName + " added to cart";
-      toast.classList.add('show');
-      
-      setTimeout(() => {
-        toast.classList.remove('show');
-      }, 2000);
-    }
-
-    // Connects WhatsApp Dispatch API Directly to the main Nav Cart Button
-    document.getElementById('cartBtn').addEventListener('click', () => {
-      if (cartItems.length > 0) {
-        let compiledList = cartItems.join(', ');
-        let customMessage = `Hello Aeth3rius, I would like to place an order for the following items: ${compiledList}. Please let me know the next steps!`;
-        let encodedURI = encodeURIComponent(customMessage);
+    <main class="product-container">
         
-        // Triggers WhatsApp chat redirect dynamically
-        window.open(`https://wa.me/6289665774307?text=${encodedURI}`, '_blank');
-      } else {
-        alert("Your cart is empty. Choose a product from the catalog before checking out!");
-      }
-    });
-  </script>
+        <section class="gallery-section">
+            <div class="slider-wrapper">
+                <div class="slider">
+                    <img src="images/VertexGrips/VertexGrips-1.jpg" alt="Vertex Grips Photo 1">
+                    <img src="images/VertexGrips/VertexGrips-2.jpg" alt="Vertex Grips Photo 2">
+                    <img src="images/VertexGrips/VertexGrips-3.jpg" alt="Vertex Grips Photo 3">
+                    <img src="images/VertexGrips/VertexGrips-4.jpg" alt="Vertex Grips Photo 4">
+                    <img src="images/VertexGrips/VertexGrips-5.jpg" alt="Vertex Grips Photo 5">
+                </div>
+                <div class="slider-instructions">Swipe / Scroll to view more</div>
+            </div>
+        </section>
+
+        <section class="details-section">
+            <h1 class="product-title">Vertex Grips</h1>
+            <div class="price"IDR 115.000</div>
+            <p class="description">
+                Engineered for maximum control and tactile feedback. Our signature brutalist design meets ergonomic precision. Designed for the modern rider.
+            </p>
+            
+            <button class="btn" onclick="checkoutWhatsApp()">Order via WhatsApp</button>
+        </section>
+
+    </main>
+
+    <footer>
+        <div>&copy; 2026 Aetherius.site</div>
+        <div>
+            <a href="#" onclick="checkoutWhatsApp('inquiry')">Shipping Info</a>
+            <a href="#" onclick="checkoutWhatsApp('inquiry')">Returns</a>
+        </div>
+    </footer>
+
+    <script>
+        // WhatsApp Integration Logic
+        function checkoutWhatsApp(type = 'order') {
+            // IMPORTANT: Replace '6281234567890' with your actual WhatsApp Business Number
+            // Omit the '+' symbol, just use the country code and number.
+            const phoneNumber = "6289665774307"; 
+            
+            let message = "";
+            if (type === 'order') {
+                message = "Hello Aetherius! I would like to order the Vertex Grips.";
+            } else if (type === 'inquiry') {
+                message = "Hello Aetherius, I have a question regarding shipping or returns.";
+            }
+
+            // Encode the text so it forms a valid URL
+            const encodedMessage = encodeURIComponent(message);
+            const waLink = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            
+            // Opens WhatsApp securely in a new tab
+            window.open(waLink, '_blank');
+        }
+    </script>
 </body>
 </html>
