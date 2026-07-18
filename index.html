@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>aeth3rius | Vertex Grips</title>
+    <title>aeth3rius</title>
     <link rel="icon" href="images/favicon.webp" type="image/webp">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,7 +12,7 @@
 
     <style>
         /* ==========================================
-           PHASE 2: DESIGN SYSTEM (VARIABLES)
+           DESIGN SYSTEM (VARIABLES)
            ========================================== */
         :root {
             --bg-color: #0a0a0a;
@@ -20,12 +20,13 @@
             --text-secondary: #a0a0a0;
             --accent-blue: #0088cc;
             --accent-blue-hover: #0077b3;
-            --border-radius: 12px; /* Soft rounded corners */
+            --discount-red: #e63946; /* Harsh red for discounts */
+            --border-radius: 12px;
             --font-main: 'Inter', sans-serif;
         }
 
         /* ==========================================
-           GLOBAL RESETS & TYPOGRAPHY
+           GLOBAL RESETS
            ========================================== */
         * {
             margin: 0;
@@ -34,7 +35,7 @@
         }
 
         html {
-            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+            scroll-behavior: smooth;
         }
 
         body {
@@ -59,7 +60,7 @@
             width: 100%;
             padding: 20px;
             background: rgba(10, 10, 10, 0.9);
-            backdrop-filter: blur(10px); /* Modern blur effect */
+            backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -89,23 +90,32 @@
            LAYOUT & CONTAINERS
            ========================================== */
         .container {
-            max-width: 800px;
+            max-width: 1000px; /* Widened for Desktop Grid */
             margin: 0 auto;
-            padding: 100px 20px 40px 20px; /* Top padding to account for fixed header */
+            padding: 100px 20px 40px 20px;
         }
 
         section {
             margin-bottom: 80px;
         }
 
+        /* Note 5: Dynamic for Phone and Desktop */
+        .products-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* Mobile: Stacks vertically */
+            gap: 30px;
+        }
+
         /* ==========================================
-           HERO / PRODUCT SECTION
+           PRODUCT CARDS
            ========================================== */
         .product-card {
             background: #111111;
             padding: 20px;
             border-radius: var(--border-radius);
             border: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            flex-direction: column;
         }
 
         /* 1:1 Image Slider */
@@ -122,14 +132,14 @@
         .slider {
             display: flex;
             overflow-x: auto;
-            scroll-snap-type: x mandatory; /* Allows swiping left/right */
-            scrollbar-width: none; /* Hides scrollbar on Firefox */
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
             width: 100%;
             height: 100%;
         }
 
         .slider::-webkit-scrollbar {
-            display: none; /* Hides scrollbar on Chrome/Safari */
+            display: none;
         }
 
         .slider img {
@@ -137,20 +147,50 @@
             width: 100%;
             height: 100%;
             scroll-snap-align: center;
-            object-fit: contain; /* Ensures the whole grip is visible without cropping */
+            object-fit: contain;
+        }
+
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1; /* Pushes buttons to the bottom evenly */
         }
 
         .product-info h1 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 800;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
 
-        .price {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--text-secondary);
+        /* Note 3: Discounted Price Logic */
+        .price-container {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
             margin-bottom: 15px;
+        }
+
+        .current-price {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .original-price {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            text-decoration: line-through;
+        }
+
+        .discount-badge {
+            background-color: var(--discount-red);
+            color: #ffffff;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 4px 8px;
+            border-radius: 6px;
+            letter-spacing: 0.5px;
         }
 
         .description {
@@ -166,6 +206,7 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
+            margin-top: auto; /* Always aligns to the bottom of the card */
         }
 
         .btn {
@@ -231,6 +272,18 @@
         }
 
         /* ==========================================
+           MEDIA QUERIES (DESKTOP ADJUSTMENTS)
+           ========================================== */
+        @media (min-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr); /* Desktop: Side by side */
+            }
+            .portfolio-grid {
+                grid-template-columns: repeat(4, 1fr); /* Desktop: 4 items in a row */
+            }
+        }
+
+        /* ==========================================
            FOOTER
            ========================================== */
         footer {
@@ -248,56 +301,39 @@
     <header>
         <div class="logo">aeth3rius</div>
         <nav>
-            <a href="#product">Product</a>
+            <a href="#products">Products</a>
             <a href="#portfolio">Portfolio</a>
-            <a href="#product" style="color: var(--accent-blue);">Cart (0)</a>
+            <a href="#cart" style="color: var(--accent-blue);">Cart (0)</a>
         </nav>
     </header>
 
     <main class="container">
         
-        <section id="product">
-            <div class="product-card">
-                
-                <div class="slider-wrapper">
-                    <div class="slider">
-                        <img src="images/VertexGrips/VertexGrips-1.png" alt="Vertex Grips Angle 1">
-                        <img src="images/VertexGrips/VertexGrips-2.jpg" alt="Vertex Grips Angle 2">
-                        <img src="images/VertexGrips/VertexGrips-3.jpg" alt="Vertex Grips Angle 3">
-                        <img src="images/VertexGrips/VertexGrips-4.jpg" alt="Vertex Grips Angle 4">
-                        <img src="images/VertexGrips/VertexGrips-5.jpg" alt="Vertex Grips Angle 5">
+        <section id="products">
+            <div class="products-grid">
+
+                <div class="product-card">
+                    <div class="slider-wrapper">
+                        <div class="slider">
+                            <img src="images/VertexGrips/VertexGrips-1.png" alt="Vertex Grips Angle 1">
+                            <img src="images/VertexGrips/VertexGrips-2.jpg" alt="Vertex Grips Angle 2">
+                            <img src="images/VertexGrips/VertexGrips-3.jpg" alt="Vertex Grips Angle 3">
+                            <img src="images/VertexGrips/VertexGrips-4.jpg" alt="Vertex Grips Angle 4">
+                            <img src="images/VertexGrips/VertexGrips-5.jpg" alt="Vertex Grips Angle 5">
+                        </div>
                     </div>
-                </div>
 
-                <div class="product-info">
-                    <h1>Vertex Grips</h1>
-                    <p class="price">IDR 150.000</p>
-                    <p class="description">Maximum control meets minimalist design. Engineered for high-performance riding with unparalleled grip texture and durability.</p>
-                    
-                    <div class="cta-group">
-                        <button class="btn btn-primary" id="wa-checkout-btn">Order via WhatsApp</button>
-                        <a href="https://toco.example.com" target="_blank" class="btn btn-secondary">Buy on Toco</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="portfolio">
-            <h2 class="section-title">Aesthetic / Portfolio</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">Vibe Shot 1</div>
-                <div class="portfolio-item">Vibe Shot 2</div>
-                <div class="portfolio-item">Details 1</div>
-                <div class="portfolio-item">Details 2</div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer>
-        <p>&copy; 2026 aeth3rius. All rights reserved.</p>
-        <p style="margin-top: 10px;">Contact: connect@aetherius.site</p>
-    </footer>
-
-</body>
-</html>
+                    <div class="product-info">
+                        <h1>Vertex Grips</h1>
+                        
+                        <div class="price-container">
+                            <span class="current-price">IDR 115.000</span>
+                            <span class="original-price">IDR 135.000</span>
+                            <span class="discount-badge">15% OFF</span>
+                        </div>
+                        
+                        <p class="description">Maximum control meets minimalist design. Engineered for high-performance riding with unparalleled grip texture and durability.</p>
+                        
+                        <div class="cta-group">
+                            <button class="btn btn-primary">Order via WhatsApp</button>
+                            <a href="
