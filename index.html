@@ -12,7 +12,7 @@
 
     <style>
         /* ==========================================
-           DESIGN SYSTEM (VARIABLES)
+           PHASE 2: DESIGN SYSTEM (VARIABLES)
            ========================================== */
         :root {
             --bg-color: #0a0a0a;
@@ -20,7 +20,7 @@
             --text-secondary: #a0a0a0;
             --accent-blue: #0088cc;
             --accent-blue-hover: #0077b3;
-            --discount-red: #e63946; /* Harsh red for discounts */
+            --discount-red: #e63946; 
             --border-radius: 12px;
             --font-main: 'Inter', sans-serif;
         }
@@ -90,7 +90,7 @@
            LAYOUT & CONTAINERS
            ========================================== */
         .container {
-            max-width: 1000px; /* Widened for Desktop Grid */
+            max-width: 1000px; 
             margin: 0 auto;
             padding: 100px 20px 40px 20px;
         }
@@ -99,10 +99,9 @@
             margin-bottom: 80px;
         }
 
-        /* Note 5: Dynamic for Phone and Desktop */
         .products-grid {
             display: grid;
-            grid-template-columns: 1fr; /* Mobile: Stacks vertically */
+            grid-template-columns: 1fr;
             gap: 30px;
         }
 
@@ -150,10 +149,16 @@
             object-fit: contain;
         }
 
+        /* Helper for placeholder logos */
+        .placeholder-img {
+            object-fit: scale-down !important; /* Prevents tiny logos from stretching weirdly */
+            padding: 20px;
+        }
+
         .product-info {
             display: flex;
             flex-direction: column;
-            flex-grow: 1; /* Pushes buttons to the bottom evenly */
+            flex-grow: 1;
         }
 
         .product-info h1 {
@@ -162,7 +167,7 @@
             margin-bottom: 8px;
         }
 
-        /* Note 3: Discounted Price Logic */
+        /* Pricing UI */
         .price-container {
             display: flex;
             align-items: center;
@@ -206,7 +211,7 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
-            margin-top: auto; /* Always aligns to the bottom of the card */
+            margin-top: auto; 
         }
 
         .btn {
@@ -232,6 +237,7 @@
             transform: translateY(-2px);
         }
 
+        /* Note 2: Making sure Toco button is visible and robust */
         .btn-secondary {
             background-color: transparent;
             color: var(--accent-blue);
@@ -261,14 +267,15 @@
 
         .portfolio-item {
             aspect-ratio: 1 / 1;
-            background: #111;
+            background: #1a1a1a; /* Slightly lighter than card bg to stand out */
             border-radius: var(--border-radius);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             color: var(--text-secondary);
             font-size: 0.8rem;
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px dashed rgba(255,255,255,0.2); /* Dashed border for placeholder vibe */
         }
 
         /* ==========================================
@@ -276,10 +283,10 @@
            ========================================== */
         @media (min-width: 768px) {
             .products-grid {
-                grid-template-columns: repeat(2, 1fr); /* Desktop: Side by side */
+                grid-template-columns: repeat(2, 1fr); 
             }
             .portfolio-grid {
-                grid-template-columns: repeat(4, 1fr); /* Desktop: 4 items in a row */
+                grid-template-columns: repeat(4, 1fr); 
             }
         }
 
@@ -288,10 +295,18 @@
            ========================================== */
         footer {
             text-align: center;
-            padding: 40px 20px;
+            padding: 60px 20px;
             font-size: 0.8rem;
             color: var(--text-secondary);
             border-top: 1px solid rgba(255,255,255,0.1);
+            background: #050505;
+        }
+        
+        .footer-brand {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 10px;
         }
 
     </style>
@@ -336,4 +351,72 @@
                         
                         <div class="cta-group">
                             <button class="btn btn-primary">Order via WhatsApp</button>
-                            <a href="
+                            <a href="https://toco.example.com" target="_blank" class="btn btn-secondary">Buy on Toco</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="slider-wrapper">
+                        <div class="slider">
+                            <img src="images/logo.png" alt="Apex Grips Placeholder" class="placeholder-img">
+                        </div>
+                    </div>
+
+                    <div class="product-info">
+                        <h1>Apex Grips</h1>
+                        
+                        <div class="price-container">
+                            <span class="current-price">IDR 115.000</span>
+                            <span class="original-price">IDR 135.000</span>
+                            <span class="discount-badge">15% OFF</span>
+                        </div>
+                        
+                        <p class="description">Next-level ergonomics and shock absorption. The Apex series is designed for extreme endurance and comfort on the toughest trails.</p>
+                        
+                        <div class="cta-group">
+                            <button class="btn btn-primary">Order via WhatsApp</button>
+                            <a href="https://toco.example.com" target="_blank" class="btn btn-secondary">Buy on Toco</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div> 
+        </section>
+
+        <section id="portfolio">
+            <h2 class="section-title">Aesthetic / Portfolio</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <span>[ Vibe Shot 1 ]</span>
+                    <span style="font-size: 0.7rem; margin-top: 5px;">Replace with 1:1 image</span>
+                </div>
+                <div class="portfolio-item">
+                    <span>[ Vibe Shot 2 ]</span>
+                    <span style="font-size: 0.7rem; margin-top: 5px;">Replace with 1:1 image</span>
+                </div>
+                <div class="portfolio-item">
+                    <span>[ Details 1 ]</span>
+                    <span style="font-size: 0.7rem; margin-top: 5px;">Replace with 1:1 image</span>
+                </div>
+                <div class="portfolio-item">
+                    <span>[ Details 2 ]</span>
+                    <span style="font-size: 0.7rem; margin-top: 5px;">Replace with 1:1 image</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-brand">aeth3rius</div>
+        <p>&copy; 2026 aeth3rius. All rights reserved.</p>
+        <p style="margin-top: 10px;">Contact: connect@aetherius.site</p>
+        <div style="margin-top: 20px; display: flex; justify-content: center; gap: 15px;">
+            <a href="#" style="text-decoration: underline;">Instagram</a>
+            <a href="#" style="text-decoration: underline;">TikTok</a>
+        </div>
+    </footer>
+
+</body>
+</html>
