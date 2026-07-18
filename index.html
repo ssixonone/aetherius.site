@@ -3,369 +3,301 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AETH3RIUS - Custom Cycling Gear</title>
-    <link rel="icon" type="image/webp" href="images/favicon.webp">
+    <title>aeth3rius | Vertex Grips</title>
+    <link rel="icon" href="images/favicon.webp" type="image/webp">
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
     <style>
-        /* Brutalist Aesthetic */
+        /* ==========================================
+           PHASE 2: DESIGN SYSTEM (VARIABLES)
+           ========================================== */
         :root {
-            --border-color: #000;
-            --bg-color: #f4f4f0; 
-            --text-color: #000;
-            --font-stack: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            --accent-color: #e60000; 
+            --bg-color: #0a0a0a;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent-blue: #0088cc;
+            --accent-blue-hover: #0077b3;
+            --border-radius: 12px; /* Soft rounded corners */
+            --font-main: 'Inter', sans-serif;
         }
-        
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        
+
+        /* ==========================================
+           GLOBAL RESETS & TYPOGRAPHY
+           ========================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+        }
+
         body {
             background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: var(--font-stack);
-            text-transform: uppercase;
-            line-height: 1.2;
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            line-height: 1.5;
             -webkit-font-smoothing: antialiased;
         }
-        
-        a { color: inherit; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        
-        /* Desktop Constrained Wrapper */
-        .wrapper { 
-            width: 92%; 
-            max-width: 1280px; 
-            margin: 4vh auto; 
-            border: 1px solid var(--border-color); 
-            display: flex; 
-            flex-direction: column; 
-            min-height: 85vh; 
-            background-color: #fff; 
-        }
-        
-        /* Header Segment */
-        header {
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center;
-            border-bottom: 1px solid var(--border-color); 
-            padding: 1.5rem;
-        }
-        
-        .logo a { 
-            font-size: 2.5rem; 
-            font-weight: 800; 
-            letter-spacing: -0.05em; 
+
+        a {
             text-decoration: none;
+            color: inherit;
         }
-        .logo a:hover { color: var(--accent-color); text-decoration: none; }
-        
-        nav { display: flex; gap: 3rem; align-items: center; }
-        .nav-links { display: flex; gap: 2rem; font-weight: 500; }
-        .cart-btn { cursor: pointer; font-weight: bold; background: #000; color: #fff; padding: 0.5rem 1rem; border-radius: 50px; }
-        .cart-btn:hover { background: #333; }
-        
-        /* Main Layout: Stacked Product Blocks */
-        main { display: flex; flex-direction: column; flex-grow: 1; }
-        
-        .product-block { 
-            display: flex; 
-            flex-wrap: wrap; 
-            border-bottom: 1px solid var(--border-color); 
+
+        /* ==========================================
+           HEADER & NAVIGATION
+           ========================================== */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px); /* Modern blur effect */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        .product-block:last-child { border-bottom: none; } 
-        
-        .product-visual, .product-info { flex: 1; min-width: 300px; }
-        
-        /* Left Side: Product Gallery */
-        .product-visual {
-            border-right: 1px solid var(--border-color);
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: -0.5px;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            color: var(--accent-blue);
+            transition: color 0.2s ease;
+        }
+
+        /* ==========================================
+           LAYOUT & CONTAINERS
+           ========================================== */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 100px 20px 40px 20px; /* Top padding to account for fixed header */
+        }
+
+        section {
+            margin-bottom: 80px;
+        }
+
+        /* ==========================================
+           HERO / PRODUCT SECTION
+           ========================================== */
+        .product-card {
+            background: #111111;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* 1:1 Image Slider */
+        .slider-wrapper {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            background: #000;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory; /* Allows swiping left/right */
+            scrollbar-width: none; /* Hides scrollbar on Firefox */
+            width: 100%;
+            height: 100%;
+        }
+
+        .slider::-webkit-scrollbar {
+            display: none; /* Hides scrollbar on Chrome/Safari */
+        }
+
+        .slider img {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 100%;
+            scroll-snap-align: center;
+            object-fit: contain; /* Ensures the whole grip is visible without cropping */
+        }
+
+        .product-info h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .description {
+            font-size: 0.95rem;
+            color: #cccccc;
+            margin-bottom: 25px;
+        }
+
+        /* ==========================================
+           CHECKOUT ZONE (BUTTONS)
+           ========================================== */
+        .cta-group {
             display: flex;
             flex-direction: column;
-            background: #f4f4f0;
-        }
-        
-        /* Strict 1:1 Aspect Ratio Box (Bulletproof Mobile Fix) */
-        .slider-container {
-            width: 100%; 
-            position: relative; 
-            overflow: hidden;
-            background: #fff;
-        }
-        
-        /* This invisible block holds the container open perfectly */
-        .slider-container::before {
-            content: "";
-            display: block;
-            padding-top: 100%;
-        }
-        
-        .slide {
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover;
-            position: absolute; 
-            top: 0; 
-            left: 0; 
-            opacity: 0; 
-            transition: opacity 0.15s ease-in-out;
-        }
-        .slide.active { opacity: 1; z-index: 1; }
-        
-        /* Image Placeholder for upcoming products */
-        .placeholder {
-            width: 100%; 
-            height: 100%;
-            position: absolute; 
-            top: 0; 
-            left: 0;
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            background-color: #e0e0e0; 
-            color: #777;
-            font-size: 1.5rem; 
-            font-weight: 800; 
-            text-align: center; 
-            padding: 2rem;
+            gap: 12px;
         }
 
-        .slider-controls {
-            display: flex; 
-            border-top: 1px solid var(--border-color);
-            margin-top: auto;
-        }
-        
-        .slider-btn {
-            flex: 1; 
-            padding: 1.5rem; 
-            text-align: center; 
-            cursor: pointer;
-            background: transparent; 
-            border: none; 
-            border-right: 1px solid var(--border-color);
-            font-family: inherit; 
-            font-size: 1.1rem; 
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        
-        .slider-btn:last-child { border-right: none; }
-        .slider-btn:hover { background: #000; color: #fff; }
-
-        /* Right Side: Typography & Info */
-        .product-info {
-            padding: 4rem 3rem; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center;
-        }
-        
-        .product-title { 
-            font-size: clamp(3.5rem, 6vw, 7rem); 
-            font-weight: 800; 
-            letter-spacing: -0.06em; 
-            margin-bottom: 1rem; 
-            line-height: 0.85; 
-        }
-        
-        .product-price { 
-            display: flex; align-items: center; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap;
-        }
-        .original-price { font-size: 1.5rem; font-weight: 500; text-decoration: line-through; color: #777; }
-        .discount-price { font-size: 2.5rem; font-weight: 700; color: var(--accent-color); }
-        
-        .product-desc { 
-            font-size: 1.1rem; margin-bottom: 4rem; max-width: 90%; 
-            text-transform: none; line-height: 1.6; font-weight: 500;
-        }
-        
-        /* Hard-Edged Buttons */
-        .action-btns { display: flex; flex-direction: column; gap: 1rem; }
         .btn {
-            padding: 1.5rem; font-size: 1.2rem; font-family: inherit; 
-            text-transform: uppercase; cursor: pointer; text-align: center; 
-            font-weight: 800; transition: all 0.2s;
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 15px;
+            font-weight: 600;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            transition: all 0.2s ease;
         }
-        .btn-secondary { background: transparent; color: #000; border: 2px solid #000; }
-        .btn-secondary:hover { background: #e0e0e0; }
-        .btn-primary { background: #000; color: #fff; border: 2px solid #000; }
-        .btn-primary:hover { background: #fff; color: #000; }
-        
-        /* Footer Segment */
-        footer { 
-            display: flex; justify-content: space-between; padding: 1.5rem; 
-            border-top: 1px solid var(--border-color); font-size: 0.9rem; font-weight: bold;
+
+        .btn-primary {
+            background-color: var(--accent-blue);
+            color: #ffffff;
         }
-        
-        /* Mobile Responsiveness */
-        @media (max-width: 900px) {
-            .wrapper { width: 100%; margin: 0; border: none; min-height: 100vh; }
-            .product-block { flex-direction: column; }
-            .product-visual { border-right: none; border-bottom: 1px solid var(--border-color); }
-            header { flex-direction: column; gap: 1.5rem; }
-            nav { width: 100%; justify-content: space-between; }
-            .nav-links { overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
-            .nav-links::-webkit-scrollbar { display: none; }
-            .product-info { padding: 2rem 1.5rem; }
-            .product-title { font-size: 4rem; }
+
+        .btn-primary:hover {
+            background-color: var(--accent-blue-hover);
+            transform: translateY(-2px);
         }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--accent-blue);
+            border: 2px solid var(--accent-blue);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(0, 136, 204, 0.1);
+        }
+
+        /* ==========================================
+           PORTFOLIO SECTION
+           ========================================== */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .portfolio-item {
+            aspect-ratio: 1 / 1;
+            background: #111;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* ==========================================
+           FOOTER
+           ========================================== */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
     </style>
 </head>
 <body>
-    <div class="wrapper">
-        <header>
-            <div class="logo"><a href="https://instagram.com/aeth3rius" target="_blank" rel="noopener noreferrer">AETH3RIUS</a></div>
-            <nav>
-                <div class="nav-links">
-                    <a href="#">Shop</a>
-                    <a href="#">About</a>
-                    <a href="#">Journal</a>
-                </div>
-                <div class="cart-btn" onclick="checkoutCart()">CART (<span id="cartCount">0</span>)</div>
-            </nav>
-        </header>
 
-        <main>
-            
-            <article class="product-block">
-                <section class="product-visual">
-                    <div class="slider-container" id="vertex-slider">
-                        <img src="images/VertexGrips/VertexGrips-1.png" alt="Vertex Grips Angle 1" class="slide active">
-                        <img src="images/VertexGrips/VertexGrips-2.jpg" alt="Vertex Grips Angle 2" class="slide">
-                        <img src="images/VertexGrips/VertexGrips-3.jpg" alt="Vertex Grips Angle 3" class="slide">
-                        <img src="images/VertexGrips/VertexGrips-4.jpg" alt="Vertex Grips Angle 4" class="slide">
-                        <img src="images/VertexGrips/VertexGrips-5.jpg" alt="Vertex Grips Angle 5" class="slide">
-                    </div>
-                    <div class="slider-controls">
-                        <button class="slider-btn" onclick="moveSlide('vertex-slider', -1)">Prev</button>
-                        <button class="slider-btn" onclick="moveSlide('vertex-slider', 1)">Next</button>
-                    </div>
-                </section>
+    <header>
+        <div class="logo">aeth3rius</div>
+        <nav>
+            <a href="#product">Product</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#product" style="color: var(--accent-blue);">Cart (0)</a>
+        </nav>
+    </header>
 
-                <section class="product-info">
-                    <div>
-                        <h1 class="product-title">VERTEX GRIPS</h1>
-                        <div class="product-price">
-                            <span class="original-price">IDR 135.000</span>
-                            <span class="discount-price">IDR 115.000</span>
-                        </div>
-                        <p class="product-desc">Uncompromising control meets brutalist design. Precision-engineered for maximum tactile response and durability. Step into the new standard of hardware.</p>
-                    </div>
-                    <div class="action-btns">
-                        <button class="btn btn-secondary" onclick="addToCart('Vertex Grips', 115)">Add to Cart</button>
-                        <button class="btn btn-primary" onclick="checkoutDirect('Vertex Grips', 115)">Order Now</button>
-                    </div>
-                </section>
-            </article>
-
-            <article class="product-block">
-                <section class="product-visual">
-                    <div class="slider-container">
-                        <div class="placeholder">IMAGE COMING SOON</div>
-                    </div>
-                    <div class="slider-controls" style="opacity: 0.3; pointer-events: none;">
-                        <button class="slider-btn">Prev</button>
-                        <button class="slider-btn">Next</button>
-                    </div>
-                </section>
-
-                <section class="product-info">
-                    <div>
-                        <h1 class="product-title">APEX GRIPS</h1>
-                        <div class="product-price">
-                            <span class="original-price">IDR 135.000</span>
-                            <span class="discount-price">IDR 115.000</span>
-                        </div>
-                        <p class="product-desc">Uncompromising control meets brutalist design. Precision-engineered for maximum tactile response and durability. Step into the new standard of hardware.</p>
-                    </div>
-                    <div class="action-btns">
-                        <button class="btn btn-secondary" onclick="addToCart('Apex Grips', 115)">Add to Cart</button>
-                        <button class="btn btn-primary" onclick="checkoutDirect('Apex Grips', 115)">Order Now</button>
-                    </div>
-                </section>
-            </article>
-
-        </main>
-
-        <footer>
-            <div class="footer-links">
-                <a href="https://wa.me/6289665774307" target="_blank">Shipping</a> &nbsp;&nbsp;|&nbsp;&nbsp; 
-                <a href="https://wa.me/6289665774307" target="_blank">Returns</a>
-            </div>
-            <div class="copyright">&copy; 2026 AETH3RIUS</div>
-        </footer>
-    </div>
-
-    <script>
-        // --- Multi-Slider Logic ---
-        function moveSlide(sliderId, direction) {
-            const container = document.getElementById(sliderId);
-            if (!container) return;
-            const slides = container.querySelectorAll('.slide');
-            if (slides.length === 0) return;
-
-            let activeIndex = Array.from(slides).findIndex(s => s.classList.contains('active'));
-            slides[activeIndex].classList.remove('active');
-
-            let newIndex = activeIndex + direction;
-            if (newIndex >= slides.length) newIndex = 0;
-            if (newIndex < 0) newIndex = slides.length - 1;
-
-            slides[newIndex].classList.add('active');
-        }
-
-        // --- Advanced Cart & WhatsApp Logic ---
-        const whatsappNumber = "6289665774307"; 
+    <main class="container">
         
-        let cartState = {}; 
+        <section id="product">
+            <div class="product-card">
+                
+                <div class="slider-wrapper">
+                    <div class="slider">
+                        <img src="images/VertexGrips/VertexGrips-1.png" alt="Vertex Grips Angle 1">
+                        <img src="images/VertexGrips/VertexGrips-2.jpg" alt="Vertex Grips Angle 2">
+                        <img src="images/VertexGrips/VertexGrips-3.jpg" alt="Vertex Grips Angle 3">
+                        <img src="images/VertexGrips/VertexGrips-4.jpg" alt="Vertex Grips Angle 4">
+                        <img src="images/VertexGrips/VertexGrips-5.jpg" alt="Vertex Grips Angle 5">
+                    </div>
+                </div>
 
-        function updateCartUI() {
-            let totalItems = 0;
-            for (let item in cartState) {
-                totalItems += cartState[item].qty;
-            }
-            document.getElementById('cartCount').innerText = totalItems;
-        }
+                <div class="product-info">
+                    <h1>Vertex Grips</h1>
+                    <p class="price">IDR 150.000</p>
+                    <p class="description">Maximum control meets minimalist design. Engineered for high-performance riding with unparalleled grip texture and durability.</p>
+                    
+                    <div class="cta-group">
+                        <button class="btn btn-primary" id="wa-checkout-btn">Order via WhatsApp</button>
+                        <a href="https://toco.example.com" target="_blank" class="btn btn-secondary">Buy on Toco</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        function addToCart(productName, price) {
-            if (!cartState[productName]) {
-                cartState[productName] = { qty: 0, price: price };
-            }
-            cartState[productName].qty++;
-            updateCartUI();
-            alert(`${productName} added to cart.`);
-        }
+        <section id="portfolio">
+            <h2 class="section-title">Aesthetic / Portfolio</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">Vibe Shot 1</div>
+                <div class="portfolio-item">Vibe Shot 2</div>
+                <div class="portfolio-item">Details 1</div>
+                <div class="portfolio-item">Details 2</div>
+            </div>
+        </section>
 
-        function checkoutDirect(productName, price) {
-            let message = `Hello Aeth3rius! I would like to order:%0A- 1x ${productName} (IDR ${price}.000)%0A%0A*Total: IDR ${price}.000*%0A%0APlease let me know the payment details and shipping process.`;
-            let whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
-            window.open(whatsappUrl, '_blank');
-        }
+    </main>
 
-        function checkoutCart() {
-            let totalItems = 0;
-            let totalPrice = 0;
-            let message = `Hello Aeth3rius! I would like to order:%0A`;
+    <footer>
+        <p>&copy; 2026 aeth3rius. All rights reserved.</p>
+        <p style="margin-top: 10px;">Contact: connect@aetherius.site</p>
+    </footer>
 
-            for (let product in cartState) {
-                if (cartState[product].qty > 0) {
-                    message += `- ${cartState[product].qty}x ${product} (IDR ${cartState[product].price}.000)%0A`;
-                    totalPrice += (cartState[product].qty * cartState[product].price);
-                    totalItems += cartState[product].qty;
-                }
-            }
-
-            if (totalItems === 0) {
-                alert("Your cart is empty. Add a product first.");
-                return;
-            }
-
-            let formattedTotal = totalPrice.toLocaleString('id-ID');
-            message += `%0A*Total: IDR ${formattedTotal}.000*%0A%0APlease let me know the payment details and shipping process.`;
-            
-            let whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
-            window.open(whatsappUrl, '_blank');
-        }
-    </script>
 </body>
 </html>
