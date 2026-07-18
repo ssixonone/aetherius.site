@@ -243,7 +243,7 @@
         }
 
         /* ==========================================
-           PORTFOLIO SECTION
+           GALLERY SECTION (RENAMED)
            ========================================== */
         .section-title {
             font-size: 1.5rem;
@@ -253,13 +253,13 @@
             padding-bottom: 10px;
         }
 
-        .portfolio-grid {
+        .gallery-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
         }
 
-        .portfolio-item {
+        .gallery-item {
             aspect-ratio: 1 / 1;
             background: #1a1a1a; 
             border-radius: var(--border-radius);
@@ -279,7 +279,7 @@
             .products-grid {
                 grid-template-columns: repeat(2, 1fr); 
             }
-            .portfolio-grid {
+            .gallery-grid {
                 grid-template-columns: repeat(4, 1fr); 
             }
         }
@@ -311,7 +311,7 @@
         <div class="logo">aeth3rius</div>
         <nav>
             <a href="#products">Products</a>
-            <a href="#portfolio">Portfolio</a>
+            <a href="#gallery">Gallery</a>
             <a href="#cart" style="color: var(--accent-blue);">Cart (0)</a>
         </nav>
     </header>
@@ -334,15 +334,12 @@
 
                     <div class="product-info">
                         <h1>VERTEX GRIPS</h1>
-                        
                         <div class="price-container">
                             <span class="current-price">IDR 115.000</span>
                             <span class="original-price">IDR 135.000</span>
                             <span class="discount-badge">15% OFF</span>
                         </div>
-                        
                         <p class="description">Maximum control meets minimalist design. Engineered for high-performance riding with unparalleled grip texture and durability.</p>
-                        
                         <div class="cta-group">
                             <button class="btn btn-primary">Order via WhatsApp</button>
                             <a href="https://toco.example.com" target="_blank" class="btn btn-secondary">Buy on Toco</a>
@@ -363,15 +360,12 @@
 
                     <div class="product-info">
                         <h1>APEX GRIPS</h1>
-                        
                         <div class="price-container">
                             <span class="current-price">IDR 115.000</span>
                             <span class="original-price">IDR 135.000</span>
                             <span class="discount-badge">15% OFF</span>
                         </div>
-                        
                         <p class="description">Next-level ergonomics and shock absorption. The Apex series is designed for extreme endurance and comfort on the toughest trails.</p>
-                        
                         <div class="cta-group">
                             <button class="btn btn-primary">Order via WhatsApp</button>
                             <a href="https://toco.example.com" target="_blank" class="btn btn-secondary">Buy on Toco</a>
@@ -392,15 +386,12 @@
 
                     <div class="product-info">
                         <h1>SHORT VERTEX GRIPS</h1>
-                        
                         <div class="price-container">
                             <span class="current-price">IDR 95.000</span>
                             <span class="original-price">IDR 115.000</span>
                             <span class="discount-badge">17% OFF</span>
                         </div>
-                        
                         <p class="description">A compact version of our flagship grip. Maximum control in a smaller profile, perfect for riders who prefer a tighter cockpit setup.</p>
-                        
                         <div class="cta-group">
                             <button class="btn btn-primary">Order via WhatsApp</button>
                             <a href="https://toco.example.com" target="_blank" class="btn btn-secondary">Buy on Toco</a>
@@ -421,15 +412,12 @@
 
                     <div class="product-info">
                         <h1>SHORT APEX GRIPS</h1>
-                        
                         <div class="price-container">
                             <span class="current-price">IDR 95.000</span>
                             <span class="original-price">IDR 115.000</span>
                             <span class="discount-badge">17% OFF</span>
                         </div>
-                        
                         <p class="description">The same extreme endurance and shock absorption of the Apex series, now optimized in a shorter length for agile handling.</p>
-                        
                         <div class="cta-group">
                             <button class="btn btn-primary">Order via WhatsApp</button>
                             <a href="https://toco.example.com" target="_blank" class="btn btn-secondary">Buy on Toco</a>
@@ -440,25 +428,13 @@
             </div> 
         </section>
 
-        <section id="portfolio">
-            <h2 class="section-title">Aesthetic / Portfolio</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <span>[ Vibe Shot 1 ]</span>
-                    <span style="font-size: 0.7rem; margin-top: 5px;">Replace with 1:1 image</span>
-                </div>
-                <div class="portfolio-item">
-                    <span>[ Vibe Shot 2 ]</span>
-                    <span style="font-size: 0.7rem; margin-top: 5px;">Replace with 1:1 image</span>
-                </div>
-                <div class="portfolio-item">
-                    <span>[ Details 1 ]</span>
-                    <span style="font-size: 0.7rem; margin-top: 5px;">Replace with 1:1 image</span>
-                </div>
-                <div class="portfolio-item">
-                    <span>[ Details 2 ]</span>
-                    <span style="font-size: 0.7rem; margin-top: 5px;">Replace with 1:1 image</span>
-                </div>
+        <section id="gallery">
+            <h2 class="section-title">Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item"><span>[ Vibe Shot 1 ]</span></div>
+                <div class="gallery-item"><span>[ Vibe Shot 2 ]</span></div>
+                <div class="gallery-item"><span>[ Details 1 ]</span></div>
+                <div class="gallery-item"><span>[ Details 2 ]</span></div>
             </div>
         </section>
 
@@ -469,8 +445,8 @@
         <p>&copy; 2026 aeth3rius. All rights reserved.</p>
         <p style="margin-top: 10px;">Contact: connect@aetherius.site</p>
         <div style="margin-top: 20px; display: flex; justify-content: center; gap: 15px;">
-            <a href="#" style="text-decoration: underline;">Instagram</a>
-            <a href="#" style="text-decoration: underline;">TikTok</a>
+            <a href="https://instagram.com/aeth3rius" target="_blank" style="text-decoration: underline;">Instagram @aeth3rius</a>
+            <a href="https://tiktok.com/@aeth3rius" target="_blank" style="text-decoration: underline;">TikTok @aeth3rius</a>
         </div>
     </footer>
 
