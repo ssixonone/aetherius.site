@@ -159,7 +159,7 @@
             font-size: 1.8rem;
             font-weight: 800;
             margin-bottom: 8px;
-            letter-spacing: -0.5px; /* Added slightly tighter spacing for caps */
+            letter-spacing: -0.5px; 
         }
 
         /* Pricing UI */
@@ -379,6 +379,64 @@
                     </div>
                 </div>
 
+                <div class="product-card">
+                    <div class="slider-wrapper">
+                        <div class="slider">
+                            <img src="images/ShortVertexGrips/ShortVertexGrips1.jpg" alt="Short Vertex Grips Angle 1">
+                            <img src="images/ShortVertexGrips/ShortVertexGrips2.jpg" alt="Short Vertex Grips Angle 2">
+                            <img src="images/ShortVertexGrips/ShortVertexGrips3.jpg" alt="Short Vertex Grips Angle 3">
+                            <img src="images/ShortVertexGrips/ShortVertexGrips4.jpg" alt="Short Vertex Grips Angle 4">
+                            <img src="images/ShortVertexGrips/ShortVertexGrips5.jpg" alt="Short Vertex Grips Angle 5">
+                        </div>
+                    </div>
+
+                    <div class="product-info">
+                        <h1>SHORT VERTEX GRIPS</h1>
+                        
+                        <div class="price-container">
+                            <span class="current-price">IDR 95.000</span>
+                            <span class="original-price">IDR 115.000</span>
+                            <span class="discount-badge">17% OFF</span>
+                        </div>
+                        
+                        <p class="description">A compact version of our flagship grip. Maximum control in a smaller profile, perfect for riders who prefer a tighter cockpit setup.</p>
+                        
+                        <div class="cta-group">
+                            <button class="btn btn-primary">Order via WhatsApp</button>
+                            <a href="https://toco.example.com" target="_blank" class="btn btn-secondary">Buy on Toco</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="slider-wrapper">
+                        <div class="slider">
+                            <img src="images/ShortApexGrips/ShortApexGrips1.jpg" alt="Short Apex Grips Angle 1">
+                            <img src="images/ShortApexGrips/ShortApexGrips2.jpg" alt="Short Apex Grips Angle 2">
+                            <img src="images/ShortApexGrips/ShortApexGrips3.jpg" alt="Short Apex Grips Angle 3">
+                            <img src="images/ShortApexGrips/ShortApexGrips4.jpg" alt="Short Apex Grips Angle 4">
+                            <img src="images/ShortApexGrips/ShortApexGrips5.jpg" alt="Short Apex Grips Angle 5">
+                        </div>
+                    </div>
+
+                    <div class="product-info">
+                        <h1>SHORT APEX GRIPS</h1>
+                        
+                        <div class="price-container">
+                            <span class="current-price">IDR 95.000</span>
+                            <span class="original-price">IDR 115.000</span>
+                            <span class="discount-badge">17% OFF</span>
+                        </div>
+                        
+                        <p class="description">The same extreme endurance and shock absorption of the Apex series, now optimized in a shorter length for agile handling.</p>
+                        
+                        <div class="cta-group">
+                            <button class="btn btn-primary">Order via WhatsApp</button>
+                            <a href="https://toco.example.com" target="_blank" class="btn btn-secondary">Buy on Toco</a>
+                        </div>
+                    </div>
+                </div>
+
             </div> 
         </section>
 
@@ -417,20 +475,17 @@
     </footer>
 
     <script>
-        // 1. Drag-to-Slide Logic for Desktop
         const sliders = document.querySelectorAll('.slider');
         let isDown = false;
         let startX;
         let scrollLeft;
 
         sliders.forEach(slider => {
-            // Make cursor look like a hand that can grab
             slider.style.cursor = 'grab';
 
             slider.addEventListener('mousedown', (e) => {
                 isDown = true;
                 slider.style.cursor = 'grabbing';
-                // Temporarily disable snapping while dragging for smooth movement
                 slider.style.scrollSnapType = 'none'; 
                 startX = e.pageX - slider.offsetLeft;
                 scrollLeft = slider.scrollLeft;
@@ -439,26 +494,23 @@
             slider.addEventListener('mouseleave', () => {
                 isDown = false;
                 slider.style.cursor = 'grab';
-                // Turn snapping back on so it locks into place perfectly
                 slider.style.scrollSnapType = 'x mandatory'; 
             });
 
             slider.addEventListener('mouseup', () => {
                 isDown = false;
                 slider.style.cursor = 'grab';
-                // Turn snapping back on so it locks into place perfectly
                 slider.style.scrollSnapType = 'x mandatory'; 
             });
 
             slider.addEventListener('mousemove', (e) => {
                 if (!isDown) return;
-                e.preventDefault(); // Stop text highlighting or image dragging
+                e.preventDefault(); 
                 const x = e.pageX - slider.offsetLeft;
-                const walk = (x - startX) * 1.5; // Drag speed multiplier
+                const walk = (x - startX) * 1.5; 
                 slider.scrollLeft = scrollLeft - walk;
             });
         });
     </script>
-    
 </body>
 </html>
